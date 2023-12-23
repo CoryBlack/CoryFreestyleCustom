@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/favicon.png" type="image/png">
-    <title>About Me - Cory Freestyle</title>
+    <title>Cory Freestyle</title>
+    <!-- Link to Pacifico font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
@@ -12,6 +15,9 @@
             font-family: 'Arial', sans-serif;
             background-color: #FFFFFF; /* White background */
             color: #001F3F; /* Dark blue text */
+            display: flex;
+		    flex-direction: column;
+		    min-height: 100vh;
         }
 
         /* Larger Screens Navbar */
@@ -42,12 +48,12 @@
             color: #FFFFFF; /* White text for the logo */
             text-decoration: none;
             padding: 14px 16px;
-            font-weight: bold;
-            font-size: 24px;
+            font-size: 40px;
+            font-family: 'Lobster', sans-serif;
         }
 
         .navbar-large #logo:hover {
-            color: inherit; /* Keep the default color on hover (same as the regular state) */
+            color: #FFFFFF; /* Keep the default color on hover (same as the regular state) */
             background-color: transparent; /* Remove any background color change on hover */
         }
 
@@ -61,6 +67,10 @@
             align-items: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
+        .navbar-large a#active {
+		    text-decoration: underline;
+		}
 
         .menu-icon {
             display: none;
@@ -82,7 +92,7 @@
 
             .menu-icon {
                 display: block;
-                padding-top: 11px;
+                padding-top: 24px;
             }
 
             .menu-icon.active div:nth-child(1) {
@@ -109,10 +119,10 @@
                 text-align: left;
                 padding: 14px 16px;
                 color: #FFFFFF; /* White text for the logo */
-                font-weight: bold;
-                font-size: 24px;
+                font-size: 40px;
                 transition: 0.3s;
                 text-decoration: none; /* Remove underline */
+                font-family: 'Lobster', sans-serif;
             }
 
             .navbar-small a:not(#logo) {
@@ -123,6 +133,10 @@
                 color: #FFFFFF; /* White text for menu items */
                 transition: 0.3s;
             }
+
+            .navbar-small a:not(#active) {
+                text-decoration: none;
+            }
         }
 
         @media only screen and (min-width: 769px) {
@@ -131,18 +145,47 @@
             }
         }
 
-        /* Common Styles */
-        .content {
-            padding: 20px;
+      	.top-background-images {
+      		width: 100%;
+      		display: flex;
+		    justify-content: space-between; /* Add space between the images */
+		    overflow: hidden;
+      	}
+
+        .top-background-images img {
+            width: 100%; /* Make images take up full width by default */
         }
+
+        @media only screen and (max-width: 768px) {
+            /* For smaller screens, hide the second image */
+            .top-background-images img:last-child {
+                display: none;
+            }
+        }
+
+        @media only screen and (min-width: 769px) {
+            /* For larger screens, show two images side by side */
+            .top-background-images img {
+                width: 50%;
+			    max-width: 100%;
+			    object-fit: cover;
+            }
+
+            .top-background-images img:last-child {
+                margin-right: 0; /* No margin for the last image */
+            }
+        }
+
+        .content {
+        	flex: 1;
+        }
+        
 
         footer {
             background-color: #001F3F; /* Dark blue footer background */
             color: #FFFFFF; /* White text in the footer */
             text-align: center;
-            padding: 20px 32px 20px 32px;
-            position: fixed;
-            width: 100%;
+            padding: 28px 40px 28px 40px;
             bottom: 0;
             display: flex;
             justify-content: flex-start;
@@ -168,7 +211,7 @@
             color: #FFFFFF; /* White text for contact and social media links */
             text-decoration: none;
             margin: 5px 0;
-            font-size: 18px;
+            font-size: 14px;
             display: flex;
             align-items: center;
         }
@@ -186,7 +229,7 @@
     <div class="navbar-large">
         <a id="logo" href="index.html">Cory Freestyle</a>
         <div>
-            <a href="index.html">Home</a>
+            <a id="active" href="index.html">Home</a>
             <a href="about.html">About Me</a>
             <a href="#portfolio">Portfolio</a>
             <a href="#contact">Contact</a>
@@ -201,31 +244,31 @@
                 <div></div>
                 <div></div>
             </div>
-            <a href="index.html">Home</a>
+            <a id="active" href="index.html">Home</a>
             <a href="about.html">About Me</a>
             <a href="#portfolio">Portfolio</a>
             <a href="#contact">Contact</a>
         </div>
         <a id="logo" href="index.html">Cory Freestyle</a>
     </div>
+
     <div class="content">
-        <h2>About Me</h2>
-        <p>
-            Welcome to my world of freestyle! I am Cory, a passionate individual who loves expressing creativity through various forms of freestyle. Whether it's dancing, art, or any other form of self-expression, I believe in the power of unleashing creativity and embracing the freedom to be oneself.
-        </p>
 
-        <h3>My Freestyle Journey</h3>
-        <p>
-            [Add details about your journey, experiences, and achievements in freestyle.]
-        </p>
 
-        <h3>Gallery</h3>
-        <img src="path/to/image1.jpg" alt="Performance Image 1">
-        <img src="path/to/image2.jpg" alt="Performance Image 2">
-        <!-- Add more images as needed -->
 
-        <!-- Add more content as necessary -->
+    <div class="top-background-images">
+        <!-- Display two images side by side on larger screens -->
+        <img src="images/applause.JPG" alt="Image 1">
+        <img src="images/usopen.JPG" alt="Image 2">
     </div>
+
+
+
+    
+    	
+    </div>
+
+
     <footer>
         <div class="footer-logo">
             <!-- Your logo goes here -->
@@ -246,22 +289,7 @@
         </div>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            const menuIcon = document.querySelector('.menu-icon');
-            menuIcon.classList.toggle('active');
-            const navLinks = document.querySelectorAll('.navbar-small a:not(#logo)');
-            navLinks.forEach(link => link.style.display = link.style.display === 'block' ? 'none' : 'block');
-        }
-
-        // Close the menu by default
-        window.onload = function () {
-            const menuIcon = document.querySelector('.menu-icon');
-            const navLinks = document.querySelectorAll('.navbar-small a:not(#logo)');
-            menuIcon.classList.remove('active');
-            navLinks.forEach(link => link.style.display = 'none');
-        }
-    </script>
+    <script src="navbar-functionality.js" defer></script>
 
 </body>
 </html>
