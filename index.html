@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="./images/favicon.png" type="image/png">
     <title>Cory Freestyle</title>
     <!-- Link to Pacifico font -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
@@ -145,7 +145,25 @@
             }
         }
 
+        .image-overlay {
+		    position: absolute;
+		    top: 0;
+		    left: 25%;
+		    width: 50%;
+		    height: 100%;
+		    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+		}
+
+		/* Adjust the position for small screens */
+	    @media only screen and (max-width: 768px) {
+	    	.image-overlay {
+	    		width: 60%;
+		        left: 40%;
+		    }
+	    }
+
       	.top-background-images {
+      		position: relative;
       		width: 100%;
       		display: flex;
 		    justify-content: space-between; /* Add space between the images */
@@ -257,9 +275,11 @@
 
 
     <div class="top-background-images">
+    	<div class="image-overlay">
+    	</div>
         <!-- Display two images side by side on larger screens -->
-        <img src="images/applause.JPG" alt="Image 1">
-        <img src="images/usopen.JPG" alt="Image 2">
+        <img src="./images/applause.JPG" alt="Image 1">
+        <img src="./images/usopen.JPG" alt="Image 2">
     </div>
 
 
@@ -280,10 +300,10 @@
         <div class="social-media">
             <div class="social-media-header">Social Media</div>
             <a href="https://www.instagram.com/coryfreestyle/" target="_blank">
-                <img src="images/instagram-48.PNG" alt="Instagram Icon"> Instagram
+                <img src="./images/instagram-48.PNG" alt="Instagram Icon"> Instagram
             </a>
             <a href="https://www.facebook.com/coryblackfs" target="_blank">
-                <img src="images/facebook-48.PNG" alt="Facebook Icon"> Facebook
+                <img src="./images/facebook-48.PNG" alt="Facebook Icon"> Facebook
             </a>
             <!-- Add more social media links as needed -->
         </div>
