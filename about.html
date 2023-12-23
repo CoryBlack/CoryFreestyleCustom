@@ -10,13 +10,13 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #FFFFFF; /* White background */
-            color: #001F3F; /* Dark blue text */
+            background-color: #ecf0f1; /* Background color */
+            color: #333; /* Text color */
         }
 
         /* Larger Screens Navbar */
         .navbar-large {
-            background-color: #001F3F; /* Dark blue navbar background */
+            background-color: #3498db;
             overflow: hidden;
             padding: 10px 32px 10px 32px;
             display: flex;
@@ -26,20 +26,20 @@
         }
 
         .navbar-large a {
-            color: #FFFFFF; /* White text in the navbar */
+            color: #fff;
             text-decoration: none;
             padding: 14px 16px;
             transition: background-color 0.3s, color 0.3s, border-radius 0.3s;
         }
 
         .navbar-large a:hover {
-            background-color: #FFD700; /* Gold hover color */
-            color: #001F3F; /* Dark blue text on hover */
+            background-color: #2980b9; /* Updated hover color */
+            color: white;
             border-radius: 5px; /* Add border-radius for a rounded look on hover */
         }
 
         .navbar-large #logo {
-            color: #FFFFFF; /* White text for the logo */
+            color: #fff;
             text-decoration: none;
             padding: 14px 16px;
             font-weight: bold;
@@ -53,7 +53,7 @@
 
         /* Smaller Screens Navbar */
         .navbar-small {
-            background-color: #001F3F; /* Dark blue navbar background */
+            background-color: #3498db;
             overflow: hidden;
             padding: 10px;
             display: flex;
@@ -70,7 +70,7 @@
         .menu-icon div {
             width: 25px;
             height: 3px;
-            background-color: #FFFFFF; /* White menu icon color */
+            background-color: #fff;
             margin: 6px 0;
             transition: 0.4s;
         }
@@ -108,7 +108,7 @@
                 width: 100%;
                 text-align: left;
                 padding: 14px 16px;
-                color: #FFFFFF; /* White text for the logo */
+                color: #fff;
                 font-weight: bold;
                 font-size: 24px;
                 transition: 0.3s;
@@ -120,7 +120,7 @@
                 width: 100%;
                 text-align: left;
                 padding: 14px 16px;
-                color: #FFFFFF; /* White text for menu items */
+                color: #fff;
                 transition: 0.3s;
             }
         }
@@ -137,8 +137,8 @@
         }
 
         footer {
-            background-color: #001F3F; /* Dark blue footer background */
-            color: #FFFFFF; /* White text in the footer */
+            background-color: #3498db;
+            color: #fff;
             text-align: center;
             padding: 20px 32px 20px 32px;
             position: fixed;
@@ -165,7 +165,7 @@
 
         .contact-info a,
         .social-media a {
-            color: #FFFFFF; /* White text for contact and social media links */
+            color: #fff;
             text-decoration: none;
             margin: 5px 0;
             font-size: 18px;
@@ -208,6 +208,16 @@
         </div>
         <a id="logo" href="index.html">Cory Freestyle</a>
     </div>
+
+
+
+
+
+<!-- // Include all content below
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+
     <div class="content">
         <h2>About Me</h2>
         <p>
@@ -226,6 +236,15 @@
 
         <!-- Add more content as necessary -->
     </div>
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ -->
+
+
+
+
+ 
     <footer>
         <div class="footer-logo">
             <!-- Your logo goes here -->
@@ -246,22 +265,7 @@
         </div>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            const menuIcon = document.querySelector('.menu-icon');
-            menuIcon.classList.toggle('active');
-            const navLinks = document.querySelectorAll('.navbar-small a:not(#logo)');
-            navLinks.forEach(link => link.style.display = link.style.display === 'block' ? 'none' : 'block');
-        }
-
-        // Close the menu by default
-        window.onload = function () {
-            const menuIcon = document.querySelector('.menu-icon');
-            const navLinks = document.querySelectorAll('.navbar-small a:not(#logo)');
-            menuIcon.classList.remove('active');
-            navLinks.forEach(link => link.style.display = 'none');
-        }
-    </script>
+    <script src="navbar-functionality.js" defer></script>
 
 </body>
 </html>
