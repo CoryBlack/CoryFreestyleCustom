@@ -16,8 +16,8 @@
             background-color: #FFFFFF; /* White background */
             color: #001F3F; /* Dark blue text */
             display: flex;
-		    flex-direction: column;
-		    min-height: 100vh;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* Larger Screens Navbar */
@@ -69,8 +69,8 @@
         }
 
         .navbar-large a#active {
-		    text-decoration: underline;
-		}
+            text-decoration: underline;
+        }
 
         .menu-icon {
             display: none;
@@ -145,30 +145,55 @@
             }
         }
 
+        .content {
+            flex: 1;
+        }
+
         .image-overlay {
-		    position: absolute;
-		    top: 0;
-		    left: 25%;
-		    width: 50%;
-		    height: 100%;
-		    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
-		}
+            position: absolute;
+            top: 0;
+            left: 25%;
+            width: 50%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+        }
 
-		/* Adjust the position for small screens */
-	    @media only screen and (max-width: 768px) {
-	    	.image-overlay {
-	    		width: 60%;
-		        left: 40%;
-		    }
-	    }
+        /* Adjust the position for small screens */
+        @media only screen and (max-width: 768px) {
+            .image-overlay {
+                width: 60%;
+                left: 40%;
+            }
+        }
 
-      	.top-background-images {
-      		position: relative;
-      		width: 100%;
-      		display: flex;
-		    justify-content: space-between; /* Add space between the images */
-		    overflow: hidden;
-      	}
+        .overlay-text {
+            font-family: 'Arial', sans-serif;
+            font-size: 36px; /* Adjust as needed */
+            font-weight: bold;
+            color: #FFFFFF; /* White text */
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Subtle text shadow */
+        }
+
+        /* Adjust the text style for smaller screens if needed */
+        @media only screen and (max-width: 768px) {
+            .overlay-text {
+                font-size: 22px; /* Decrease font size for smaller screens if necessary */
+            }
+        }
+
+
+        .top-background-images {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between; /* Add space between the images */
+            overflow: hidden;
+        }
 
         .top-background-images img {
             width: 100%; /* Make images take up full width by default */
@@ -185,8 +210,8 @@
             /* For larger screens, show two images side by side */
             .top-background-images img {
                 width: 50%;
-			    max-width: 100%;
-			    object-fit: cover;
+                max-width: 100%;
+                object-fit: cover;
             }
 
             .top-background-images img:last-child {
@@ -194,10 +219,52 @@
             }
         }
 
-        .content {
-        	flex: 1;
+        /* Videos Section */
+
+       .videos-container {
+            width: 100%;
         }
-        
+
+        .video-container {
+            margin-bottom: 20px; /* Add some space between videos */
+        }
+
+
+        @media only screen and (min-width: 769px) {
+            .videos-container {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            .video-container iframe {
+                width: 560;
+                height: 315;
+            }
+        }
+
+
+        @media only screen and (max-width: 768px) {
+            .video-container {
+              max-width: 560px;
+              margin: 0px auto;
+            }
+
+            .video-container > div {
+              position: relative;
+              padding-bottom: 56.25%;
+              height: 0px;
+            }
+
+            .video-container iframe {
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              width: 100%;
+              height: 100%;
+            }
+        }
+
+
 
         footer {
             background-color: #001F3F; /* Dark blue footer background */
@@ -208,6 +275,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
+            flex-wrap: wrap;
         }
 
         .contact-info,
@@ -216,6 +284,7 @@
             flex-direction: column;
             align-items: flex-start;
             margin-right: 20px;
+            padding-bottom: 20px;
         }
 
         .contact-header,
@@ -271,24 +340,49 @@
     </div>
 
     <div class="content">
+        <div class="top-background-images">
+            <div class="image-overlay">
+                <div class="overlay-text">
+                    Unlocking the Magic: Cory Freestyle Transforms Soccer into Art
+                </div>
+            </div>
+            <!-- Display two images side by side on larger screens -->
+            <img src="./images/applause.jpg" alt="Image 1">
+            <img src="./images/usopen.jpg" alt="Image 2">
+        </div>
 
 
 
-    <div class="top-background-images">
-    	<div class="image-overlay">
-    	</div>
-        <!-- Display two images side by side on larger screens -->
-        <img src="./images/applause.jpg" alt="Image 1">
-        <img src="./images/usopen.jpg" alt="Image 2">
+
+
+
+
+
+
+
+
+
+
+<div class="videos-container">
+        <div class="video-container">
+        <h2 style="text-align: center; margin-top: 20px;">Freestyle Showreel</h2>
+  <div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/24QXl15nlKg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+        <div class="video-container">
+        <h2 style="text-align: center; margin-top: 20px;">Stage Show</h2>
+  <div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/lHCouNp5lU8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+
+
+</div>
+        
     </div>
-
-
-
-    
-    	
-    </div>
-
-
     <footer>
         <div class="footer-logo">
             <!-- Your logo goes here -->
@@ -305,11 +399,9 @@
             <a href="https://www.facebook.com/coryblackfs" target="_blank">
                 <img src="./images/facebook-48.png" alt="Facebook Icon"> Facebook
             </a>
-            <!-- Add more social media links as needed -->
         </div>
     </footer>
 
     <script src="navbar-functionality.js" defer></script>
-
 </body>
 </html>
