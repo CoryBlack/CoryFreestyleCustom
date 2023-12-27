@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./images/favicon.png" type="image/png">
+    <link rel="icon" href="./images/soccerBallFavicon.png" type="image/png">
     <title>Cory Freestyle</title>
     <!-- Link to Pacifico font -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
@@ -331,6 +331,7 @@
             align-items: flex-start;
             flex-wrap: wrap;
             margin-top: 10px;
+            position: relative;
         }
 
         .contact-info,
@@ -362,6 +363,25 @@
         .social-media a img {
             width: 28px;
             margin-right: 5px;
+        }
+        .copyright {
+            position: absolute;
+            bottom: 0;
+            margin: 20px;
+            font-size: 12px; /* Adjust the font size as needed */
+            color: #FFFFFF; /* Adjust the color based on your design */
+        }
+         @media only screen and (min-width: 769px) {
+            .copyright {
+                bottom: 0;
+                right: 0;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .copyright {
+                left: 0;
+            }
         }
     </style>
 </head>
@@ -551,6 +571,9 @@
             <a href="https://www.facebook.com/coryblackfs" target="_blank">
                 <img src="./images/facebook-48.png" alt="Facebook Icon"> Facebook
             </a>
+        </div>
+        <div class="copyright">
+            &copy; 2023 Cory Black. All rights reserved.
         </div>
     </footer>
 
