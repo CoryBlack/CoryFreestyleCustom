@@ -199,11 +199,18 @@
 
         /* Image Carousel Style */
         .my-freestyle-journey-carousel {
-            margin: 20px 0 0 0;
+            margin: 20px auto 0 auto;
             width: 95%; /* Adjust as needed */
-            margin-left: auto;
-            margin-right: auto;
+            opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease;
+    -webkit-transition: opacity 1s ease;
         }
+
+        .my-freestyle-journey-carousel.slick-initialized {
+    visibility: visible;
+    opacity: 1;    
+}
 
         .about-me-image-container {
             position: relative;
@@ -232,7 +239,7 @@
 
         @media only screen and (min-width: 769px) {
             .my-freestyle-journey-carousel {
-                margin: 0 0 10px 0;
+                margin: 0 auto 10px auto;
             }
 
             .about-me-image-container img {
@@ -272,6 +279,37 @@
             .about-me-image-container img {
                 transition: none;
             }
+        }
+
+        /* Client Collaborations Style */
+        .client-collaborations {
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(to right, #001F3F, #004080);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            color: #FFFFFF;
+        }
+
+        .logo-gallery {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr); /* Adjust the number of columns as needed */
+            gap: 20px; /* Adjust the gap between logos as needed */
+            margin-top: 10px;
+        }
+
+        .logo-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .logo-gallery img:hover {
+            opacity: 0.7;
         }
 
         /* Footer Style */
@@ -357,7 +395,7 @@
     <div class="photo-gallery">
             <img src="images/jugglingWithABalance.jpg" alt="Juggling With A Balance">
             <img src="images/fsHeadshot.jpg" alt="Freestyle Headshot">
-            <img src="images/baselball.JPG" alt="BaselBall">
+            <img src="images/baselBall.JPG" alt="BaselBall">
         </div>
 
 
@@ -461,7 +499,18 @@
                 <p>
                     Over the years, I've had the pleasure of collaborating with a diverse range of clients. Here are some highlights of my partnerships and the fantastic projects we've worked on together.
                 </p>
-                <!-- Add client logos, images, or testimonials here -->
+                <div class="client-collaborations">
+                    <div class="logo-gallery">
+                        <img src="images/clients/soundersLogo.png" alt="Sounders">
+                        <img src="images/clients/mcdonaldsLogo.jpg" alt="McDonalds">
+                        <img src="images/clients/toppsLogo.jpg" alt="Topps">
+                        <img src="images/clients/raveLogo.jpg" alt="Rave">
+                        <img src="images/clients/sea206Logo.png" alt="SEA206">
+                        <img src="images/clients/washingtonYouthSoccerLogo.jpg" alt="Youth Soccer">
+                        <img src="images/clients/cityOfBellevueLogo.png" alt="City of Bellevue">
+                        <img src="images/clients/mondoLogo.jpg" alt="Mondo">
+                    </div>
+                </div>
             </div>
 
             <div class="about-me-section">
