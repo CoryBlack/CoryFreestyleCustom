@@ -216,7 +216,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover; /* Maintain aspect ratio without distortion */
-            transition: opacity 0.3s ease-in-out;
         }
 
         .about-me-description {
@@ -229,8 +228,30 @@
             font-size: 18px;
             font-weight: bold;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out;
         }
+
+        @media only screen and (min-width: 769px) {
+            .my-freestyle-journey-carousel {
+                margin: 0 0 10px 0;
+            }
+
+            .about-me-image-container img {
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .about-me-description {
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .about-me-image-container:hover img {
+                /* Change opacity lower if you want higher opaqueness over the images in carousel */
+                opacity: 0.3;
+            }
+
+            .about-me-image-container:hover .about-me-description {
+                opacity: 1;
+            }
+         }
 
         /* Media query for small screens */
         @media only screen and (max-width: 768px) {
@@ -245,16 +266,12 @@
                 opacity: 1; /* Show the text without hover effect on small screens */
                 transition: none; /* Remove transition on small screens */
                 margin-top: 60px; /* Add margin to separate text from the image */
+                margin-bottom: -40px;
             }
-        }
 
-        .about-me-image-container:hover img {
-            /* Change opacity lower if you want higher opaqueness over the images in carousel */
-            opacity: 0.3;
-        }
-
-        .about-me-image-container:hover .about-me-description {
-            opacity: 1;
+            .about-me-image-container img {
+                transition: none;
+            }
         }
 
         /* Footer Style */
