@@ -202,15 +202,15 @@
             margin: 20px auto 0 auto;
             width: 95%; /* Adjust as needed */
             opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease;
-    -webkit-transition: opacity 1s ease;
+            visibility: hidden;
+            transition: opacity 1s ease;
+            -webkit-transition: opacity 1s ease;
         }
 
         .my-freestyle-journey-carousel.slick-initialized {
-    visibility: visible;
-    opacity: 1;    
-}
+            visibility: visible;
+            opacity: 1;    
+        }
 
         .about-me-image-container {
             position: relative;
@@ -298,6 +298,12 @@
             grid-template-columns: repeat(8, 1fr); /* Adjust the number of columns as needed */
             gap: 20px; /* Adjust the gap between logos as needed */
             margin-top: 10px;
+        }
+
+         @media only screen and (max-width: 768px) {
+            .logo-gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         .logo-gallery img {
