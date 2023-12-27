@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/favicon.png" type="image/png">
-    <title>About Me - Cory Freestyle</title>
+    <link rel="icon" href="./images/favicon.png" type="image/png">
+    <title>Cory Freestyle</title>
+    <!-- Link to Pacifico font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #ecf0f1; /* Background color */
-            color: #333; /* Text color */
+            background: linear-gradient(to bottom, #F2F5F8, #B0C5D9);
+            color: #001F3F; /* Dark blue text */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Larger Screens Navbar */
+        /* Larger Screens Navbar Style */
         .navbar-large {
-            background-color: #3498db;
+            background-color: #001F3F; /* Dark blue navbar background */
             overflow: hidden;
             padding: 10px 32px 10px 32px;
             display: flex;
@@ -26,40 +32,44 @@
         }
 
         .navbar-large a {
-            color: #fff;
+            color: #FFFFFF; /* White text in the navbar */
             text-decoration: none;
             padding: 14px 16px;
             transition: background-color 0.3s, color 0.3s, border-radius 0.3s;
         }
 
         .navbar-large a:hover {
-            background-color: #2980b9; /* Updated hover color */
-            color: white;
+            background-color: #FFD700; /* Gold hover color */
+            color: #001F3F; /* Dark blue text on hover */
             border-radius: 5px; /* Add border-radius for a rounded look on hover */
         }
 
         .navbar-large #logo {
-            color: #fff;
+            color: #FFFFFF; /* White text for the logo */
             text-decoration: none;
             padding: 14px 16px;
-            font-weight: bold;
-            font-size: 24px;
+            font-size: 40px;
+            font-family: 'Lobster', sans-serif;
         }
 
         .navbar-large #logo:hover {
-            color: inherit; /* Keep the default color on hover (same as the regular state) */
+            color: #FFFFFF; /* Keep the default color on hover (same as the regular state) */
             background-color: transparent; /* Remove any background color change on hover */
         }
 
-        /* Smaller Screens Navbar */
+        /* Smaller Screens Navbar Style */
         .navbar-small {
-            background-color: #3498db;
+            background-color: #001F3F; /* Dark blue navbar background */
             overflow: hidden;
             padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-large a#active {
+            text-decoration: underline;
         }
 
         .menu-icon {
@@ -70,7 +80,7 @@
         .menu-icon div {
             width: 25px;
             height: 3px;
-            background-color: #fff;
+            background-color: #FFFFFF; /* White menu icon color */
             margin: 6px 0;
             transition: 0.4s;
         }
@@ -82,7 +92,7 @@
 
             .menu-icon {
                 display: block;
-                padding-top: 11px;
+                padding-top: 24px;
             }
 
             .menu-icon.active div:nth-child(1) {
@@ -108,11 +118,11 @@
                 width: 100%;
                 text-align: left;
                 padding: 14px 16px;
-                color: #fff;
-                font-weight: bold;
-                font-size: 24px;
+                color: #FFFFFF; /* White text for the logo */
+                font-size: 40px;
                 transition: 0.3s;
                 text-decoration: none; /* Remove underline */
+                font-family: 'Lobster', sans-serif;
             }
 
             .navbar-small a:not(#logo) {
@@ -120,8 +130,12 @@
                 width: 100%;
                 text-align: left;
                 padding: 14px 16px;
-                color: #fff;
+                color: #FFFFFF; /* White text for menu items */
                 transition: 0.3s;
+            }
+
+            .navbar-small a:not(#active) {
+                text-decoration: none;
             }
         }
 
@@ -131,22 +145,79 @@
             }
         }
 
-        /* Common Styles */
         .content {
-            padding: 20px;
+            flex: 1;
         }
 
+        .photo-gallery {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            overflow: hidden; /* Ensure overflow is hidden on smaller screens */
+        }
+
+        .photo-gallery img {
+            width: 30%; /* Adjust as needed */
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Media query for small screens */
+        @media only screen and (max-width: 768px) {
+            .photo-gallery {
+                justify-content: center;
+            }
+
+            .photo-gallery img {
+                width: 70%; /* Adjust as needed for the central image on small screens */
+                order: 2; /* Set the order of the middle image to be displayed in the center */
+            }
+
+            .photo-gallery img:first-child,
+            .photo-gallery img:last-child {
+                display: none; /* Hide the first and last images on small screens */
+            }
+        }
+
+        /* About Me Style */
+        .about-me-container {
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(to right, #001F3F, #004080);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            color: #FFFFFF;
+        }
+
+        .about-me-section {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee; /* Light gray border between sections */
+        }
+
+        .about-me-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+
+
+        /* Footer Style */
         footer {
-            background-color: #3498db;
-            color: #fff;
+            background-color: #001F3F; /* Dark blue footer background */
+            color: #FFFFFF; /* White text in the footer */
             text-align: center;
-            padding: 20px 32px 20px 32px;
-            position: fixed;
-            width: 100%;
+            padding: 28px 40px 28px 40px;
             bottom: 0;
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
+            flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .contact-info,
@@ -155,6 +226,7 @@
             flex-direction: column;
             align-items: flex-start;
             margin-right: 20px;
+            padding-bottom: 20px;
         }
 
         .contact-header,
@@ -165,10 +237,10 @@
 
         .contact-info a,
         .social-media a {
-            color: #fff;
+            color: #FFFFFF; /* White text for contact and social media links */
             text-decoration: none;
             margin: 5px 0;
-            font-size: 18px;
+            font-size: 14px;
             display: flex;
             align-items: center;
         }
@@ -187,7 +259,8 @@
         <a id="logo" href="index.html">Cory Freestyle</a>
         <div>
             <a href="index.html">Home</a>
-            <a href="about.html">About Me</a>
+            <!-- Update for each new page -->
+            <a id="active" href="about.html">About Me</a>
             <a href="#portfolio">Portfolio</a>
             <a href="#contact">Contact</a>
         </div>
@@ -202,49 +275,70 @@
                 <div></div>
             </div>
             <a href="index.html">Home</a>
-            <a href="about.html">About Me</a>
+            <!-- Update for each new page -->
+            <a id="active" href="about.html">About Me</a>
             <a href="#portfolio">Portfolio</a>
             <a href="#contact">Contact</a>
         </div>
         <a id="logo" href="index.html">Cory Freestyle</a>
     </div>
 
-
-
-
-
-<!-- // Include all content below
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
--->
-
+    <!-- All Content -->
     <div class="content">
-        <h2>About Me</h2>
-        <p>
-            Welcome to my world of freestyle! I am Cory, a passionate individual who loves expressing creativity through various forms of freestyle. Whether it's dancing, art, or any other form of self-expression, I believe in the power of unleashing creativity and embracing the freedom to be oneself.
-        </p>
 
-        <h3>My Freestyle Journey</h3>
-        <p>
-            [Add details about your journey, experiences, and achievements in freestyle.]
-        </p>
+    <div class="photo-gallery">
+            <img src="images/jugglingWithABalance.jpg" alt="Juggling With A Balance">
+            <img src="images/fsHeadshot.jpg" alt="Freestyle Headshot">
+            <img src="images/baselball.jpg" alt="BaselBall">
+        </div>
 
-        <h3>Gallery</h3>
-        <img src="path/to/image1.jpg" alt="Performance Image 1">
-        <img src="path/to/image2.jpg" alt="Performance Image 2">
-        <!-- Add more images as needed -->
 
-        <!-- Add more content as necessary -->
+        <div class="about-me-container">
+            <div class="about-me-section">
+                <h2>About Me</h2>
+                <p>
+                    Hi there! I'm <strong>Cory Black</strong>, a professional soccer freestyle performer with 13 years of freestyling and 9 years of juggling experience.
+                    From dazzling formal stage performances in artistic shows to injecting energy into corporate events and parties, I bring a unique blend of skill and entertainment.
+                </p>
+                <p>
+                    Having collaborated with renowned companies like the <strong>Seattle Sounders</strong> and <strong>McDonald's</strong>, and adding a touch of freestyle magic to Gala events,
+                    I bring a dynamic presence to every project.
+                </p>
+                <p>
+                    Ready to infuse your show, project, or commercial with freestyle flair? Don't hesitate to reach out!
+                </p>
+            </div>
+
+            <div class="about-me-section">
+                <h2>My Freestyle Journey</h2>
+                <p>
+                    Embark on a visual journey through my years of freestyling. Check out the gallery below to witness some of my most memorable performances and behind-the-scenes moments.
+                </p>
+                <!-- Add an image gallery here -->
+                <!-- Example: <img class="about-me-image" src="path/to/image1.jpg" alt="Description"> -->
+            </div>
+
+            <div class="about-me-section">
+                <h2>Client Collaborations</h2>
+                <p>
+                    Over the years, I've had the pleasure of collaborating with a diverse range of clients. Here are some highlights of my partnerships and the fantastic projects we've worked on together.
+                </p>
+                <!-- Add client logos, images, or testimonials here -->
+            </div>
+
+            <div class="about-me-section">
+                <h2>Skills and Specialties</h2>
+                <p>
+                    My performances are characterized by a fusion of skill, creativity, and audience engagement. Here's a glimpse into the specific skills and specialties that set my freestyle acts apart.
+                </p>
+                <!-- Add a list or showcase of your skills -->
+            </div>
+
+        </div>
     </div>
-
-<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- -->
-
-
-
-
- 
+     
+    <!-- Footer -->
+    </div>
     <footer>
         <div class="footer-logo">
             <!-- Your logo goes here -->
@@ -256,16 +350,14 @@
         <div class="social-media">
             <div class="social-media-header">Social Media</div>
             <a href="https://www.instagram.com/coryfreestyle/" target="_blank">
-                <img src="images/instagram-48.PNG" alt="Instagram Icon"> Instagram
+                <img src="./images/instagram-48.png" alt="Instagram Icon"> Instagram
             </a>
             <a href="https://www.facebook.com/coryblackfs" target="_blank">
-                <img src="images/facebook-48.PNG" alt="Facebook Icon"> Facebook
+                <img src="./images/facebook-48.png" alt="Facebook Icon"> Facebook
             </a>
-            <!-- Add more social media links as needed -->
         </div>
     </footer>
 
     <script src="navbar-functionality.js" defer></script>
-
 </body>
 </html>

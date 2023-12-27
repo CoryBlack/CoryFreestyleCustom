@@ -13,14 +13,14 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #FFFFFF; /* White background */
+            background: linear-gradient(to bottom, #F2F5F8, #B0C5D9);
             color: #001F3F; /* Dark blue text */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Larger Screens Navbar */
+        /* Larger Screens Navbar Style */
         .navbar-large {
             background-color: #001F3F; /* Dark blue navbar background */
             overflow: hidden;
@@ -57,7 +57,7 @@
             background-color: transparent; /* Remove any background color change on hover */
         }
 
-        /* Smaller Screens Navbar */
+        /* Smaller Screens Navbar Style */
         .navbar-small {
             background-color: #001F3F; /* Dark blue navbar background */
             overflow: hidden;
@@ -149,6 +149,7 @@
             flex: 1;
         }
 
+        /* Images at top of homepage style */
         .image-overlay {
             position: absolute;
             top: 0;
@@ -179,13 +180,11 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Subtle text shadow */
         }
 
-        /* Adjust the text style for smaller screens if needed */
         @media only screen and (max-width: 768px) {
             .overlay-text {
                 font-size: 22px; /* Decrease font size for smaller screens if necessary */
             }
         }
-
 
         .top-background-images {
             position: relative;
@@ -219,8 +218,17 @@
             }
         }
 
-        /* Videos Section */
+        /* About me Style */
+        .about-me-section {
+            background: linear-gradient(to right, #001F3F, #004080);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto; /* Center the section horizontally */
+            max-width: 800px; /* Set a maximum width for better readability */
+            color: #FFFFFF;
+        }
 
+        /* Videos Style */
        .videos-container {
             width: 100%;
         }
@@ -228,7 +236,6 @@
         .video-container {
             margin-bottom: 20px; /* Add some space between videos */
         }
-
 
         @media only screen and (min-width: 769px) {
             .videos-container {
@@ -241,7 +248,6 @@
                 height: 315;
             }
         }
-
 
         @media only screen and (max-width: 768px) {
             .video-container {
@@ -264,8 +270,7 @@
             }
         }
 
-
-
+        /* Footer Style */
         footer {
             background-color: #001F3F; /* Dark blue footer background */
             color: #FFFFFF; /* White text in the footer */
@@ -276,6 +281,7 @@
             justify-content: flex-start;
             align-items: flex-start;
             flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .contact-info,
@@ -316,6 +322,7 @@
     <div class="navbar-large">
         <a id="logo" href="index.html">Cory Freestyle</a>
         <div>
+            <!-- Update for each new page -->
             <a id="active" href="index.html">Home</a>
             <a href="about.html">About Me</a>
             <a href="#portfolio">Portfolio</a>
@@ -331,6 +338,7 @@
                 <div></div>
                 <div></div>
             </div>
+            <!-- Update for each new page -->
             <a id="active" href="index.html">Home</a>
             <a href="about.html">About Me</a>
             <a href="#portfolio">Portfolio</a>
@@ -339,49 +347,64 @@
         <a id="logo" href="index.html">Cory Freestyle</a>
     </div>
 
+    <!-- All Content -->
     <div class="content">
+
+        <!-- Top Images -->
         <div class="top-background-images">
             <div class="image-overlay">
                 <div class="overlay-text">
-                    Unlocking the Magic: Cory Freestyle Transforms Soccer into Art
+                    Unlocking the Magic:
+                    Transforming Soccer into Art
                 </div>
             </div>
-            <!-- Display two images side by side on larger screens -->
             <img src="./images/applause.jpg" alt="Image 1">
             <img src="./images/usopen.jpg" alt="Image 2">
         </div>
 
+        <!-- About Me -->
+        <div class="about-me-section">
+            <p>
+                Hey, I'm Cory Black – a pro soccer freestyle performer with 13 years of experience. From dazzling shows with the Seattle Sounders to corporate events, I've brought the magic of freestyle to diverse stages.
+            </p>
+            <p>
+                Open to enhancing your next project with an unforgettable performance. Whether it's a show, event, or gig, let's make it extraordinary. Discover more on the <a href="about.html" style="color: #FFD700;">About Me</a> page.
+            </p>
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-<div class="videos-container">
+        <!-- Showreels -->
+        <div class="videos-container">
+            <div class="video-container">
+                <h2 style="text-align: center; margin-top: 20px;">Freestyle Showreel</h2>
+                <div>
+                    <iframe
+                        width="560"
+                        height="315"
+                        src="https://www.youtube.com/embed/24QXl15nlKg"
+                        title="Freestyle Showreel Video"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+        </div>
         <div class="video-container">
-        <h2 style="text-align: center; margin-top: 20px;">Freestyle Showreel</h2>
-  <div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/24QXl15nlKg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-</div>
-
-        <div class="video-container">
-        <h2 style="text-align: center; margin-top: 20px;">Stage Show</h2>
-  <div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/lHCouNp5lU8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-</div>
-
-
-
-</div>
-        
+            <h2 style="text-align: center; margin-top: 20px;">Stage Show</h2>
+            <div>
+                <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/lHCouNp5lU8"
+                    title="Stage Show Video"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+     
+    <!-- Footer -->
     </div>
     <footer>
         <div class="footer-logo">
