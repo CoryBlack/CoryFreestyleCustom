@@ -7,6 +7,8 @@
     <title>Cory Freestyle</title>
     <!-- Link to Pacifico font -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
     <style>
         body {
@@ -192,19 +194,68 @@
         }
 
         .about-me-section {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
             border-bottom: 1px solid #eee; /* Light gray border between sections */
         }
 
-        .about-me-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 10px;
+        /* Image Carousel Style */
+        .my-freestyle-journey-carousel {
+            margin: 20px 0 0 0;
+            width: 95%; /* Adjust as needed */
+            margin-left: auto;
+            margin-right: auto;
         }
 
+        .about-me-image-container {
+            position: relative;
+            overflow: hidden;
+            margin: 10px; /* Remove margin to eliminate space between images */
+            width: 50%; /* Adjust as needed */
+        }
 
+        .about-me-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio without distortion */
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .about-me-description {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* Media query for small screens */
+        @media only screen and (max-width: 768px) {
+            .about-me-image-container {
+                width: 100%; /* Adjust as needed for full-width on small screens */
+            }
+
+            .about-me-description {
+                position: relative;
+                text-align: center;
+                color: #fff; /* Text color */
+                opacity: 1; /* Show the text without hover effect on small screens */
+                transition: none; /* Remove transition on small screens */
+                margin-top: 60px; /* Add margin to separate text from the image */
+            }
+        }
+
+        .about-me-image-container:hover img {
+            /* Change opacity lower if you want higher opaqueness over the images in carousel */
+            opacity: 0.3;
+        }
+
+        .about-me-image-container:hover .about-me-description {
+            opacity: 1;
+        }
 
         /* Footer Style */
         footer {
@@ -314,8 +365,64 @@
                 <p>
                     Embark on a visual journey through my years of freestyling. Check out the gallery below to witness some of my most memorable performances and behind-the-scenes moments.
                 </p>
-                <!-- Add an image gallery here -->
-                <!-- Example: <img class="about-me-image" src="path/to/image1.jpg" alt="Description"> -->
+                <div class="my-freestyle-journey-carousel">
+                    <div class="about-me-image-container">
+                        <img src="images/baselball2023-1.jpg" alt="Basel Ball 2023">
+                        <div class="about-me-description">
+                            <p>Basel Ball Freestyle Competition - Top 8</p>
+                            <p>Dec. 8-9 | Miami, Florida</p>
+                        </div>
+                    </div>
+                    <div class="about-me-image-container">
+                        <img src="images/superball2023.jpg" alt="Super Ball 2023">
+                        <div class="about-me-description">
+                            <p>Super Ball World Freestyle Football Championships</p>
+                            <p>Aug. 6-11 | Prague, Czech Republic</p>
+                        </div>
+                    </div>
+                    <div class="about-me-image-container">
+                        <img src="images/MondoJuggling.jpg" alt="Mondo Fest Juggling">
+                        <div class="about-me-description">
+                            <p>Mondo Fest Gala Show Performance</p>
+                            <p>Mar. 4 2023 | St. Paul Minnesota</p>
+                        </div>
+                    </div>
+                    <div class="about-me-image-container">
+                        <img src="images/ForeignJam.jpg" alt="Foreign Jam III">
+                        <div class="about-me-description">
+                            <p>Foreign Jam III Freestyle Competition - Top 8</p>
+                            <p>Jan. 27-29 2023 | San Diego, California</p>
+                        </div>
+                    </div>
+                    <div class="about-me-image-container">
+                        <img src="images/BaselBall2022.jpg" alt="Basel Ball 2022">
+                        <div class="about-me-description">
+                            <p>Basel Ball Freestyle Competition - Top 8</p>
+                            <p>Dec. 3-4 2022 | Miami, Florida</p>
+                        </div>
+                    </div>
+                    <div class="about-me-image-container">
+                        <img src="images/SuperBall2022.jpg" alt="Super Ball 2022">
+                        <div class="about-me-description">
+                            <p>Super Ball World Freestyle Football Championships</p>
+                            <p>Aug. 7-13 2022 | Prague, Czech Republic</p>
+                        </div>
+                    </div>
+                    <div class="about-me-image-container">
+                        <img src="images/WffaUSOpen.jpg" alt="WFFA US Open">
+                        <div class="about-me-description">
+                            <p>WFFA US Open Freestyle Championships - Top 16</p>
+                            <p>July 2-3 2022 | Daytona, Florida</p>
+                        </div>
+                    </div>
+                    <div class="about-me-image-container">
+                        <img src="images/SoundersPreGameEntertainment.jpg" alt="Seattle Sounders FC">
+                        <div class="about-me-description">
+                            <p>Seattle Sounders FC - Pregame Entertainment</p>
+                            <p>Summer 2021 | Seattle, Washington</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="about-me-section">
@@ -359,5 +466,45 @@
     </footer>
 
     <script src="navbar-functionality.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+   $(document).ready(function () {
+        var $carousel = $('.my-freestyle-journey-carousel');
+
+        $carousel.slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            prevArrow: '<button class="slick-prev" aria-label="Previous" type="button">Previous</button>',
+            nextArrow: '<button class="slick-next" aria-label="Next" type="button">Next</button>',
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    },
+                },
+            ],
+        });
+
+        // Initially, hide the prev button since we're on the first slide
+        $('.slick-prev').hide();
+
+        // Update the visibility of prev and next arrows
+        $carousel.on('afterChange', function (event, slick, currentSlide, nextSlide) {
+            if (currentSlide === 0) {
+                $('.slick-prev').hide();
+                $('.slick-next').show(); // Show next button when not on the first slide
+            } else if (currentSlide >= slick.slideCount - slick.options.slidesToShow) {
+                $('.slick-next').hide();
+                $('.slick-prev').show(); // Show prev button when not on the last slide
+            } else {
+                $('.slick-prev, .slick-next').show();
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
