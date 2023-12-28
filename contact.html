@@ -13,7 +13,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to bottom, #F2F5F8, #B0C5D9);
+            background: #27292d;
             color: #001F3F; /* Dark blue text */
             display: flex;
             flex-direction: column;
@@ -154,11 +154,35 @@
 		    justify-content: center;
 		    margin: 0;
 		    background: linear-gradient(to right, #F2F5F8, #B0C5D9); /* Fallback background */
-		    background-image: url('images/contactFormBackgroundLeft.jpg'), url('images/contactFormBackgroundRight.JPG');
 		    background-size: auto 100%, auto 100%; /* Adjusted background size */
 		    background-position: left, right; /* Adjusted background positions */
 		    background-repeat: no-repeat;
 		}
+
+		@media only screen and (min-width: 1249px) {
+            .content {
+                background-image: url('images/contactFormBackgroundLeftLarge.jpg'), url('images/contactFormBackgroundRightLarge.JPG');
+            }
+        }
+
+        @media only screen and (min-width: 1046px) and (max-width: 1248px) {
+            .content {
+                background-image: url('images/contactFormBackgroundLeftMedium.jpg'), url('images/contactFormBackgroundRightMedium.JPG');
+            }
+        }
+
+        @media only screen and (min-width: 846px) and (max-width: 1045px) {
+            .content {
+                background-image: url('images/contactFormBackgroundLeftSmall.jpg'), url('images/contactFormBackgroundRightSmall.JPG');
+            }
+        }
+
+        @media only screen and (max-width: 845px) {
+            .content {
+                background-image: url('images/StageImage.jpg');
+                background-position: center;
+            }
+        }
 
         #contact-form-container {
             background-color: #001F3F;
@@ -166,6 +190,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             width: 400px;
+            height: 100%;
         }
 
         #contact-form label {
