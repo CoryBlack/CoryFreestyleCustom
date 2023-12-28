@@ -319,6 +319,10 @@
             opacity: 0.7;
         }
 
+        .instagram-section a {
+            color: #3498db; /* Change this to your preferred color code */
+        }
+
         /* Footer Style */
         footer {
             background-color: #001F3F; /* Dark blue footer background */
@@ -386,26 +390,6 @@
     </style>
 </head>
 <body>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '380388311334084',
-          xfbml      : true,
-          version    : 'v18.0'
-        });
-        FB.AppEvents.logPageView();
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "https://connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-
-    <!-- Larger Screens Navbar -->
     <div class="navbar-large">
         <a id="logo" href="index.html">Cory Freestyle</a>
         <div>
@@ -560,17 +544,11 @@
 
             <div class="about-me-section">
                 <h2>Stay Connected</h2>
-                <p>
-                    Follow me on Instagram to stay updated on my latest freestyle soccer performances and behind-the-scenes moments.
+                <p class="instagram-section">
+                    Follow me on <a href="https://www.instagram.com/coryfreestyle/" target="_blank">Instagram</a> to stay updated on my latest freestyle soccer performances and behind-the-scenes moments.
                 </p>
                 <!-- Placeholder for Instagram posts -->
                 <div id="instagram-feed"></div>
-                <div
-                  class="fb-like"
-                  data-share="true"
-                  data-width="450"
-                  data-show-faces="true">
-                </div>
             </div>
 
         </div>
@@ -640,72 +618,5 @@
             });
         });
     </script>
-    <script>
-        $(document).ready(function () {
-            // Function to fetch Instagram posts
-            function fetchInstagramPosts() {
-                // Replace 'YOUR_ACCESS_TOKEN' with your Instagram Access Token
-                const accessToken = 'IGQWRNclpPVkZAzelRCU0ZAUcmJJRDdGMUVyWnlDbldvcG5kS0NIbHRxNVRIOGR2NE9LZADFQRTlUaFh5azgyY09zd3hKZAlZA4WTZAaQjMxb2tqd0ZACMENxbUNORHY0WnR2SFVOZAFRGVk1jQlhUUng5WlVFRUg3a0EyeFUZD';
-                // Replace 'YOUR_USER_ID' with your Instagram User ID
-                const userId = '1624128623';
-                // Number of posts to retrieve
-                const numPosts = 6;
-
-                // Instagram API endpoint for fetching user media
-                const apiUrl = `https://graph.instagram.com/v12.0/${userId}/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp&limit=${numPosts}&access_token=${accessToken}`;
-
-                // Fetch Instagram posts
-                fetch(apiUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Display the fetched posts
-                        displayInstagramPosts(data.data);
-                    })
-                    .catch(error => console.error('Error fetching Instagram posts:', error));
-
-                // Fetch Instagram posts
-                fetch(apiUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        // Display the fetched posts
-                        displayInstagramPosts(data.data);
-                    })
-                    .catch(error => {
-                        console.error('Error fetching Instagram posts:', error);
-                        // Log the error to the console
-                        instagramFeed.innerHTML = `<p>Error fetching Instagram posts: ${error.message}</p>`;
-                    });
-            }
-
-            // Function to display Instagram posts
-            function displayInstagramPosts(posts) {
-                const instagramFeed = document.getElementById('instagram-feed');
-
-                // Check if there are posts to display
-                if (posts && posts.length > 0) {
-                    // Create HTML for each post
-                    const postHtml = posts.map(post => {
-                        return `
-                            <div>
-                                <a href="${post.permalink}" target="_blank">
-                                    <img src="${post.thumbnail_url}" alt="${post.caption || 'Instagram Post'}">
-                                </a>
-                            </div>
-                        `;
-                    }).join('');
-
-                    // Append the HTML to the Instagram feed container
-                    instagramFeed.innerHTML = postHtml;
-                } else {
-                    // If no posts are available
-                    instagramFeed.innerHTML = '<p>No Instagram posts available.</p>';
-                }
-            }
-
-            // Fetch Instagram posts on document load
-            fetchInstagramPosts();
-        });
-    </script>
-
 </body>
 </html>
