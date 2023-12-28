@@ -386,6 +386,24 @@
     </style>
 </head>
 <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '380388311334084',
+          xfbml      : true,
+          version    : 'v18.0'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <!-- Larger Screens Navbar -->
     <div class="navbar-large">
@@ -394,7 +412,6 @@
             <a href="index.html">Home</a>
             <!-- Update for each new page -->
             <a id="active" href="about.html">About Me</a>
-            <a href="#portfolio">Portfolio</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
@@ -410,7 +427,6 @@
             <a href="index.html">Home</a>
             <!-- Update for each new page -->
             <a id="active" href="about.html">About Me</a>
-            <a href="#portfolio">Portfolio</a>
             <a href="contact.html">Contact</a>
         </div>
         <a id="logo" href="index.html">Cory Freestyle</a>
@@ -543,11 +559,18 @@
             </div>
 
             <div class="about-me-section">
-                <h2>Skills and Specialties</h2>
+                <h2>Stay Connected</h2>
                 <p>
-                    My performances are characterized by a fusion of skill, creativity, and audience engagement. Here's a glimpse into the specific skills and specialties that set my freestyle acts apart.
+                    Follow me on Instagram to stay updated on my latest freestyle soccer performances and behind-the-scenes moments.
                 </p>
-                <!-- Add a list or showcase of your skills -->
+                <!-- Placeholder for Instagram posts -->
+                <div id="instagram-feed"></div>
+                <div
+                  class="fb-like"
+                  data-share="true"
+                  data-width="450"
+                  data-show-faces="true">
+                </div>
             </div>
 
         </div>
@@ -579,44 +602,110 @@
 
     <script src="navbar-functionality.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script>
-   $(document).ready(function () {
-        var $carousel = $('.my-freestyle-journey-carousel');
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+       $(document).ready(function () {
+            var $carousel = $('.my-freestyle-journey-carousel');
 
-        $carousel.slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            prevArrow: '<button class="slick-prev" aria-label="Previous" type="button">Previous</button>',
-            nextArrow: '<button class="slick-next" aria-label="Next" type="button">Next</button>',
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
+            $carousel.slick({
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                prevArrow: '<button class="slick-prev" aria-label="Previous" type="button">Previous</button>',
+                nextArrow: '<button class="slick-next" aria-label="Next" type="button">Next</button>',
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                        },
                     },
-                },
-            ],
+                ],
+            });
+
+            // Initially, hide the prev button since we're on the first slide
+            $('.slick-prev').hide();
+
+            // Update the visibility of prev and next arrows
+            $carousel.on('afterChange', function (event, slick, currentSlide, nextSlide) {
+                if (currentSlide === 0) {
+                    $('.slick-prev').hide();
+                    $('.slick-next').show(); // Show next button when not on the first slide
+                } else if (currentSlide >= slick.slideCount - slick.options.slidesToShow) {
+                    $('.slick-next').hide();
+                    $('.slick-prev').show(); // Show prev button when not on the last slide
+                } else {
+                    $('.slick-prev, .slick-next').show();
+                }
+            });
         });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Function to fetch Instagram posts
+            function fetchInstagramPosts() {
+                // Replace 'YOUR_ACCESS_TOKEN' with your Instagram Access Token
+                const accessToken = 'IGQWRNclpPVkZAzelRCU0ZAUcmJJRDdGMUVyWnlDbldvcG5kS0NIbHRxNVRIOGR2NE9LZADFQRTlUaFh5azgyY09zd3hKZAlZA4WTZAaQjMxb2tqd0ZACMENxbUNORHY0WnR2SFVOZAFRGVk1jQlhUUng5WlVFRUg3a0EyeFUZD';
+                // Replace 'YOUR_USER_ID' with your Instagram User ID
+                const userId = '1624128623';
+                // Number of posts to retrieve
+                const numPosts = 6;
 
-        // Initially, hide the prev button since we're on the first slide
-        $('.slick-prev').hide();
+                // Instagram API endpoint for fetching user media
+                const apiUrl = `https://graph.instagram.com/v12.0/${userId}/media?fields=id,caption,media_type,media_url,thumbnail_url,permalink,timestamp&limit=${numPosts}&access_token=${accessToken}`;
 
-        // Update the visibility of prev and next arrows
-        $carousel.on('afterChange', function (event, slick, currentSlide, nextSlide) {
-            if (currentSlide === 0) {
-                $('.slick-prev').hide();
-                $('.slick-next').show(); // Show next button when not on the first slide
-            } else if (currentSlide >= slick.slideCount - slick.options.slidesToShow) {
-                $('.slick-next').hide();
-                $('.slick-prev').show(); // Show prev button when not on the last slide
-            } else {
-                $('.slick-prev, .slick-next').show();
+                // Fetch Instagram posts
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Display the fetched posts
+                        displayInstagramPosts(data.data);
+                    })
+                    .catch(error => console.error('Error fetching Instagram posts:', error));
+
+                // Fetch Instagram posts
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Display the fetched posts
+                        displayInstagramPosts(data.data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching Instagram posts:', error);
+                        // Log the error to the console
+                        instagramFeed.innerHTML = `<p>Error fetching Instagram posts: ${error.message}</p>`;
+                    });
             }
+
+            // Function to display Instagram posts
+            function displayInstagramPosts(posts) {
+                const instagramFeed = document.getElementById('instagram-feed');
+
+                // Check if there are posts to display
+                if (posts && posts.length > 0) {
+                    // Create HTML for each post
+                    const postHtml = posts.map(post => {
+                        return `
+                            <div>
+                                <a href="${post.permalink}" target="_blank">
+                                    <img src="${post.thumbnail_url}" alt="${post.caption || 'Instagram Post'}">
+                                </a>
+                            </div>
+                        `;
+                    }).join('');
+
+                    // Append the HTML to the Instagram feed container
+                    instagramFeed.innerHTML = postHtml;
+                } else {
+                    // If no posts are available
+                    instagramFeed.innerHTML = '<p>No Instagram posts available.</p>';
+                }
+            }
+
+            // Fetch Instagram posts on document load
+            fetchInstagramPosts();
         });
-    });
-</script>
+    </script>
 
 </body>
 </html>
