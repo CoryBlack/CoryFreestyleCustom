@@ -31,6 +31,15 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        .navbar-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            height: 80px;
+        }
+
         .navbar-large a {
             color: #FFFFFF; /* White text in the navbar */
             text-decoration: none;
@@ -318,7 +327,7 @@
             background-color: #001F3F; /* Dark blue footer background */
             color: #FFFFFF; /* White text in the footer */
             text-align: center;
-            padding: 28px 40px 28px 40px;
+            padding: 28px 40px 0px 40px;
             bottom: 0;
             display: flex;
             justify-content: flex-start;
@@ -326,6 +335,18 @@
             flex-wrap: wrap;
             margin-top: 10px;
             position: relative;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            padding-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 120px;
+            width: auto;
         }
 
         .contact-info,
@@ -389,7 +410,10 @@
                             Larger Screens Navbar
     ---------------------------------------------------------------------------->
     <div class="navbar-large">
-        <a id="logo" href="./">Cory Freestyle</a>
+        <div class="navbar-left">
+            <img src="./images/CoryFreestyleLogoBlueAndGoldNoText.png" alt="Cory Freestyle Logo" class="navbar-logo">
+            <a id="logo" href="./">Cory Freestyle</a>
+        </div>
         <div>
             <!-- Update for each new page -->
             <a id="active" href="./">Home</a>
@@ -533,7 +557,7 @@
     </div>
     <footer>
         <div class="footer-logo">
-            <!-- Your logo goes here -->
+            <img src="./images/CoryFreestyleLogoBlueAndGold.png" alt="Cory Freestyle Full Logo">
         </div>
         <div class="contact-info">
             <div class="contact-header">Contact</div>
