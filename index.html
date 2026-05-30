@@ -245,6 +245,46 @@
             }
         }
 
+        /* Hero Video Section */
+        .hero-video-section {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            background-color: #001F3F;
+        }
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
+            display: block;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .hero-video-section {
+                height: 280px;
+            }
+
+            .hero-overlay {
+                padding: 20px;
+                background: linear-gradient(
+                    to bottom,
+                    rgba(0, 31, 63, 0.3),
+                    rgba(0, 31, 63, 0.88)
+                );
+                align-items: flex-end;
+            }
+
+            .hero-text h1 {
+                font-size: 28px;
+            }
+
+            .hero-text p {
+                font-size: 16px;
+            }
+        }
+
         /*-----------------------------------------------------------------------*/
         /* About Me Section */
         /*-----------------------------------------------------------------------*/
@@ -459,7 +499,7 @@
     <div class="content">
 
         <!-- Top Images -->
-        <div class="top-background-images">
+        <!-- <div class="top-background-images"> -->
             <!-- <div class="image-overlay">
                 <div class="overlay-text">
                     Soccer Freestyle:
@@ -468,17 +508,40 @@
             </div>
             <img src="./images/applause.jpg" alt="Image 1">
             <img src="./images/usopen.jpg" alt="Image 2"> -->
-            <img src="./images/dragonAtComp.jpg" alt="Image 1">
+ <!--            <img src="./images/dragonAtComp.jpg" alt="Image 1">
             <img src="./images/fsHeadshotNew.jpg" alt="Image 2">
             <img src="./images/5ballMoisture2025.png" alt="Image 3">
-        </div>
+        </div> -->
+
+
+        <section class="hero-video-section">
+            <video
+                class="hero-video"
+                autoplay
+                muted
+                loop
+                playsinline
+                poster="./images/HeroPlaceholder.png">
+                <source src="./videos/homepage-hero.mov" type="video/mp4">
+            </video>
+            <!-- <div class="hero-overlay">
+                <div class="hero-text">
+                    <h1>Football Freestyle & Circus Performance</h1>
+                    <p>Dynamic live entertainment for festivals, events, and touring shows.</p>
+                    <div class="hero-buttons">
+                        <a href="#showreels">Watch Showreel</a>
+                        <a href="./contact">Book Cory</a>
+                    </div>
+                </div>
+            </div> -->
+        </section>
 
     <!---------------------------------------------------------------------------
                             About Me
     ---------------------------------------------------------------------------->
         <div class="about-me-section">
             <p>
-                I’m a professional circus artist currently in Seattle gearing up for a summer full of performances for the 2026 Fifa World Cup. With over 16 years of experience in football freestyle and juggling, I’ve brought my act to festivals, championships, and touring circus shows across the U.S.
+                I’m a professional circus artist currently in Seattle gearing up for a summer full of performances for the 2026 FIFA World Cup. With over 16 years of experience in football freestyle and juggling, I’ve brought my act to festivals, championships, and touring circus shows across the U.S.
             </p>
             <p>
                 Interested in adding something unforgettable to your event? I’m available for select bookings and always open to exciting collaborations. <a href="about.html" style="color: #FFD700;">Learn more about what I do.</a> 
@@ -530,7 +593,7 @@
                     </a>
                 </div> -->
                 <!-- Moisture Festival -->
-                <div style="display: flex; flex-direction: column; align-items: center;">
+                <!-- <div style="display: flex; flex-direction: column; align-items: center;">
                     <a href="https://moisturefestival.org/" target="_blank" style="text-decoration: none; color: inherit;">
                         <div style="height: 300px; display: flex; align-items: center;">
                             <img src="./images/UpcomingShows/Moisture2026Poster.png" alt="Moisture 2026 Poster"
@@ -540,6 +603,15 @@
                             April 1 - 5, 2026<br>Moisture Festival - Seattle, Washington
                         </p>
                     </a>
+                </div> -->
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div style="height: 300px; display: flex; align-items: center;">
+                            <img src="./images/UpcomingShows/FifaWorldCupPoster.png" alt="FIFA 2026 Poster"
+                                 style="width: 400px; max-height: 300px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s;">
+                        </div>
+                        <p style="margin-top: 15px; font-weight: bold; text-align: center;">
+                            Summer 2026<br>FIFA World Cup - Various Events Around Seattle
+                        </p>
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: center;">
                         <div style="height: 300px; display: flex; align-items: center;">
@@ -556,7 +628,7 @@
     <!---------------------------------------------------------------------------
                             Showreels
     ---------------------------------------------------------------------------->
-        <div class="videos-container">
+        <div id="showreels" class="videos-container">
             <div class="video-container">
                 <h2 style="text-align: center; margin-top: 20px;">Freestyle Showreel</h2>
                 <div>
