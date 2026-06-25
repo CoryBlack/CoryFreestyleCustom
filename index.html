@@ -245,14 +245,18 @@
             }
         }
 
+        /*-----------------------------------------------------------------------*/
         /* Hero Video Section */
-        .hero-video-section {
+        /*-----------------------------------------------------------------------*/
+
+        .hero-container {
             position: relative;
-            width: 100%;
-            height: 500px;
             overflow: hidden;
-            background-color: #001F3F;
+            height: 500px;
         }
+
+        /* HERO VIDEO */
+
         .hero-video {
             width: 100%;
             height: 100%;
@@ -261,28 +265,196 @@
             display: block;
         }
 
-        @media only screen and (max-width: 768px) {
-            .hero-video-section {
-                height: 280px;
+        /* DARK GRADIENT OVER VIDEO */
+
+        .hero-container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.65) 0%,
+                rgba(0, 0, 0, 0.35) 35%,
+                rgba(0, 0, 0, 0) 70%
+            );
+
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* TEXT OVERLAY */
+
+        .hero-overlay {
+            position: absolute;
+
+            left: 4%;
+            top: 50%;
+            transform: translateY(-50%);
+
+            max-width: 550px;
+
+            color: white;
+            text-align: left;
+
+            z-index: 2;
+        }
+
+        /* HEADLINE */
+
+        .hero-overlay h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            line-height: 1.1;
+
+            margin: 0 0 12px;
+
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+        }
+
+        /* SUBTITLE */
+
+        .hero-overlay p {
+            font-size: 1.25rem;
+            line-height: 1.5;
+
+            margin: 0 0 24px;
+
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+        }
+
+        /* BUTTON ROW */
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* BUTTONS */
+
+        .hero-button-primary,
+        .hero-button-secondary {
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        /* PRIMARY BUTTON */
+
+        .hero-button-primary {
+            background: #f3c54d;
+            color: #05233d;
+        }
+
+        .hero-button-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* SECONDARY BUTTON */
+
+        .hero-button-secondary {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .hero-button-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            .hero-container {
+                height: auto;
+                overflow: visible;
+                background: #05233d;
+            }
+
+            .hero-video {
+                height: 360px;
+                object-fit: cover;
+                object-position: center center;
+            }
+
+            .hero-container::before {
+                display: none;
             }
 
             .hero-overlay {
-                padding: 20px;
-                background: linear-gradient(
-                    to bottom,
-                    rgba(0, 31, 63, 0.3),
-                    rgba(0, 31, 63, 0.88)
-                );
-                align-items: flex-end;
+                position: static;
+                transform: none;
+
+                max-width: none;
+                padding: 28px 20px 32px;
+
+                color: white;
+                text-align: center;
+                background: #05233d;
             }
 
-            .hero-text h1 {
-                font-size: 28px;
+            .hero-overlay h1 {
+                font-size: 2rem;
+                margin: 0 0 12px;
+                text-shadow: none;
             }
 
-            .hero-text p {
-                font-size: 16px;
+            .hero-overlay p {
+                font-size: 1rem;
+                margin: 0 0 22px;
+                text-shadow: none;
             }
+
+            .hero-buttons {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .hero-button-primary,
+            .hero-button-secondary {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /*-----------------------------------------------------------------------*/
+        /* Featured By Section */
+        /*-----------------------------------------------------------------------*/
+
+        .featured-by {
+          background: #05233d;
+          padding: 40px 20px;
+        }
+        .featured-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          text-align: center;
+        }
+        .featured-label {
+          margin: 0 0 24px;
+          font-size: 0.8rem;
+          font-weight: 700;
+          letter-spacing: 0.25em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.65);
+        }
+        .featured-logos {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 36px;
+        }
+        .featured-logos span {
+          color: white;
+          font-size: 1.3rem;
+          font-weight: 800;
+          letter-spacing: 0.03em;
+          white-space: nowrap;
+          opacity: 0.95;
         }
 
         /*-----------------------------------------------------------------------*/
@@ -493,6 +665,7 @@
         <a id="logo" href="./">Cory Freestyle</a>
     </div>
 
+
     <!---------------------------------------------------------------------------
                             Body Content
     ---------------------------------------------------------------------------->
@@ -513,28 +686,51 @@
             <img src="./images/5ballMoisture2025.png" alt="Image 3">
         </div> -->
 
-
         <section class="hero-video-section">
-            <video
-                class="hero-video"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-                poster="./images/HeroPlaceholder.png">
-                <source src="./videos/homepage-hero.mp4?v=2" type="video/mp4">
-            </video>
-            <!-- <div class="hero-overlay">
-                <div class="hero-text">
-                    <h1>Football Freestyle & Circus Performance</h1>
-                    <p>Dynamic live entertainment for festivals, events, and touring shows.</p>
+            <div class="hero-container">
+                <video
+                    class="hero-video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                    poster="./images/HeroPlaceholder.png">
+                    <source src="./videos/homepage-hero.mp4?v=2" type="video/mp4">
+                </video>
+                <div class="hero-overlay">
+                    <h1>Professional Freestyle Soccer Performer & Juggler</h1>
+                    <p>
+                        Based in Seattle • Available for Events Nationwide
+                    </p>
                     <div class="hero-buttons">
-                        <a href="#showreels">Watch Showreel</a>
-                        <a href="./contact">Book Cory</a>
+                        <a href="./contact.html" class="hero-button-primary">
+                            Book a Performance
+                        </a>
+                        <a href="#showreels" class="hero-button-secondary">
+                            Watch Showreel
+                        </a>
                     </div>
                 </div>
-            </div> -->
+            </div>
+        </section>
+
+        <!---------------------------------------------------------------------------
+                            Featured By
+        ---------------------------------------------------------------------------->
+
+        <section class="featured-by">
+          <div class="featured-container">
+            <p class="featured-label">FEATURED BY</p>
+            <div class="featured-logos">
+              <span>FIFA WORLD CUP 26™</span>
+              <span>SEATTLE SOUNDERS FC</span>
+              <span>MCDONALD'S</span>
+              <span>SEATTLE TIMES</span>
+              <span>PORT OF SEATTLE</span>
+              <span>MOISTURE FESTIVAL</span>
+            </div>
+          </div>
         </section>
 
     <!---------------------------------------------------------------------------
@@ -614,7 +810,7 @@
                             Summer 2026<br>FIFA World Cup - Various Events Around Seattle
                         </p>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: center;">
+                <<!-- div style="display: flex; flex-direction: column; align-items: center;">
                         <div style="height: 300px; display: flex; align-items: center;">
                             <img src="./images/UpcomingShows/TukwilaBlockParty.png" alt="Tukwila Block Party Logo"
                                  style="width: 400px; max-height: 300px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s;">
@@ -622,7 +818,7 @@
                         <p style="margin-top: 15px; font-weight: bold; text-align: center;">
                             June 13, 2026<br>Tukwila Block Party - Tukwila, Washington
                         </p>
-                </div>
+                </div> -->
             </div>
         </div>
 
