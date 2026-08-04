@@ -1,0 +1,88 @@
+body {
+    background: #27292d;
+}
+
+.content {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background: linear-gradient(to right, #F2F5F8, #B0C5D9);
+    background-size: auto 100%, auto 100%;
+    background-position: left, right;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (min-width: 1249px) {
+    .content {
+        background-image: url('/images/contactFormImages/contactFormBackgroundLeftLarge.jpg'), url('/images/contactFormImages/contactFormBackgroundRightLarge.JPG');
+    }
+}
+
+@media only screen and (min-width: 1046px) and (max-width: 1248px) {
+    .content {
+        background-image: url('/images/contactFormImages/contactFormBackgroundLeftMedium.jpg'), url('/images/contactFormImages/contactFormBackgroundRightMedium.JPG');
+    }
+}
+
+@media only screen and (min-width: 846px) and (max-width: 1045px) {
+    .content {
+        background-image: url('/images/contactFormImages/contactFormBackgroundLeftSmall.jpg'), url('/images/contactFormImages/contactFormBackgroundRightSmall.JPG');
+    }
+}
+
+@media only screen and (max-width: 845px) {
+    .content {
+        background-image: url('/images/contactFormImages/StageImage.jpg');
+        background-position: center;
+    }
+}
+
+#contact-form-container {
+    background-color: #001F3F;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 400px;
+    height: 100%;
+    margin: auto;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #FFFFFF;
+    text-align: left;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.g-recaptcha {
+    margin-bottom: 16px;
+}
+
+#contact-form button {
+    background-color: #FFD700;
+    color: #001F3F;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+#thank-you-message {
+    display: none;
+    margin-top: 20px;
+    color: #FFFFFF;
+}

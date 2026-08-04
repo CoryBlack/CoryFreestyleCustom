@@ -1,0 +1,15 @@
+title: Cory Freestyle
+description: >-
+  Professional circus and freestyle football performer available for events,
+  festivals, and touring shows worldwide.
+url: "https://www.coryfreestyle.com"
+
+# GitHub Pages builds Jekyll automatically on every push -- nothing to install,
+# nothing to run locally. Just edit files and git push like before.
+
+# Don't let Jekyll try to process/copy these
+exclude:
+  - README.md
+  - README-JEKYLL-MIGRATION.md
+  - Gemfile
+  - Gemfile.lock

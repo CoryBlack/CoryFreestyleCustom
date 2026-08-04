@@ -1,464 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./images/soccerBallFavicon.png" type="image/png">
-    <title>Cory Freestyle</title>
-    <!-- Link to Pacifico font -->
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: #27292d;
-            color: #001F3F; /* Dark blue text */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+---
+layout: default
+title: Cory Freestyle
+extra_css:
+  - /assets/css/contact.css
+head_extra: |
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+foot_extra: |
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const form = document.getElementById('contact-form');
+          const thankYouMessage = document.getElementById('thank-you-message');
 
-        /* Larger Screens Navbar Style */
-        .navbar-large {
-            background-color: #001F3F; /* Dark blue navbar background */
-            overflow: hidden;
-            padding: 10px 32px 10px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+          form.addEventListener('submit', async function (event) {
+              event.preventDefault(); // Prevent the default form submission
 
-        .navbar-left {
-            display: flex;
-            align-items: center;
-        }
+              // Verify reCAPTCHA before proceeding
+              const recaptchaResponse = grecaptcha.getResponse();
+              if (!recaptchaResponse) {
+                  // Alert the user if reCAPTCHA is not verified
+                  alert('Please complete the reCAPTCHA before submitting the form.');
+                  return;
+              }
 
-        .navbar-logo {
-            height: 80px;
-        }
+              // Assuming you've already validated the form fields here
 
-        .navbar-large a {
-            color: #FFFFFF; /* White text in the navbar */
-            text-decoration: none;
-            padding: 14px 16px;
-            transition: background-color 0.3s, color 0.3s, border-radius 0.3s;
-        }
+              // Display the thank you message
+              thankYouMessage.style.display = 'block';
 
-        .navbar-large a:hover {
-            background-color: #FFD700; /* Gold hover color */
-            color: #001F3F; /* Dark blue text on hover */
-            border-radius: 5px; /* Add border-radius for a rounded look on hover */
-        }
+              // Hide the form
+              form.style.display = 'none';
 
-        .navbar-large #logo {
-            color: #FFFFFF; /* White text for the logo */
-            text-decoration: none;
-            padding: 14px 16px;
-            font-size: 40px;
-            font-family: 'Lobster', sans-serif;
-        }
+              // Send the form data to Formspree using fetch
+              const formData = new FormData(form);
+              try {
+                  await fetch('https://formspree.io/f/mpzvavjn', {
+                      method: 'POST',
+                      headers: {
+                          'Accept': 'application/json',
+                      },
+                      body: formData,
+                  });
+              } catch (error) {
+                  console.error('Error submitting form:', error);
+              }
+          });
+      });
+  </script>
+---
+<div id="contact-form-container">
+    <form id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
 
-        .navbar-large #logo:hover {
-            color: #FFFFFF; /* Keep the default color on hover (same as the regular state) */
-            background-color: transparent; /* Remove any background color change on hover */
-        }
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
 
-        /* Smaller Screens Navbar Style */
-        .navbar-small {
-            background-color: #001F3F; /* Dark blue navbar background */
-            overflow: hidden;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
 
-        .navbar-large a#active {
-            text-decoration: underline;
-        }
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
 
-        .menu-icon {
-            display: none;
-            cursor: pointer;
-        }
+        <div class="g-recaptcha" data-sitekey="6LeESD4pAAAAANAn4oKqAvhsah0C_EPVVGGf5CZa"></div>
 
-        .menu-icon div {
-            width: 25px;
-            height: 3px;
-            background-color: #FFFFFF; /* White menu icon color */
-            margin: 6px 0;
-            transition: 0.4s;
-        }
+        <button type="submit">Submit</button>
+    </form>
 
-        @media only screen and (max-width: 768px) {
-            .navbar-large {
-                display: none;
-            }
-
-            .menu-icon {
-                display: block;
-                padding-top: 24px;
-            }
-
-            .menu-icon.active div:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .menu-icon.active div:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-icon.active div:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            .navbar-small {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-            }
-
-            .navbar-small #logo {
-                display: block;
-                width: 100%;
-                text-align: left;
-                padding: 14px 16px;
-                color: #FFFFFF; /* White text for the logo */
-                font-size: 40px;
-                transition: 0.3s;
-                text-decoration: none; /* Remove underline */
-                font-family: 'Lobster', sans-serif;
-            }
-
-            .navbar-small a:not(#logo) {
-                display: block;
-                width: 100%;
-                text-align: left;
-                padding: 14px 16px;
-                color: #FFFFFF; /* White text for menu items */
-                transition: 0.3s;
-                display: none;
-            }
-
-            .navbar-small a:not(#active) {
-                text-decoration: none;
-            }
-        }
-
-        @media only screen and (min-width: 769px) {
-            .navbar-small {
-                display: none;
-            }
-        }
-
-		.content {
-		    flex: 1;
-		    text-align: center;
-		    display: flex;
-		    align-items: center;
-		    justify-content: center;
-		    margin: 0;
-		    background: linear-gradient(to right, #F2F5F8, #B0C5D9); /* Fallback background */
-		    background-size: auto 100%, auto 100%; /* Adjusted background size */
-		    background-position: left, right; /* Adjusted background positions */
-		    background-repeat: no-repeat;
-		}
-
-		@media only screen and (min-width: 1249px) {
-            .content {
-                background-image: url('images/contactFormImages/contactFormBackgroundLeftLarge.jpg'), url('images/contactFormImages/contactFormBackgroundRightLarge.JPG');
-            }
-        }
-
-        @media only screen and (min-width: 1046px) and (max-width: 1248px) {
-            .content {
-                background-image: url('images/contactFormImages/contactFormBackgroundLeftMedium.jpg'), url('images/contactFormImages/contactFormBackgroundRightMedium.JPG');
-            }
-        }
-
-        @media only screen and (min-width: 846px) and (max-width: 1045px) {
-            .content {
-                background-image: url('images/contactFormImages/contactFormBackgroundLeftSmall.jpg'), url('images/contactFormImages/contactFormBackgroundRightSmall.JPG');
-            }
-        }
-
-        @media only screen and (max-width: 845px) {
-            .content {
-                background-image: url('images/contactFormImages/StageImage.jpg');
-                background-position: center;
-            }
-        }
-
-        #contact-form-container {
-            background-color: #001F3F;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 400px;
-            height: 100%;
-        }
-
-        #contact-form label {
-            display: block;
-            margin-bottom: 8px;
-            color: #FFFFFF;
-            text-align: left;
-        }
-
-        #contact-form input,
-        #contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 16px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .g-recaptcha {
-		    margin-bottom: 16px; /* You can adjust this value as needed */
-		}
-
-        #contact-form button {
-            background-color: #FFD700;
-            color: #001F3F;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-        }
-
-        #thank-you-message {
-            display: none;
-            margin-top: 20px;
-            color: #FFFFFF;
-        }
-
-        /* Center the form */
-        #contact-form-container {
-            margin: auto;
-        }
-
-
-        /* Footer Style */
-        footer {
-            background-color: #001F3F; /* Dark blue footer background */
-            color: #FFFFFF; /* White text in the footer */
-            text-align: center;
-            padding: 28px 40px 0px 40px;
-            bottom: 0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            position: relative;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-            padding-bottom: 20px;
-        }
-        
-        .footer-logo img {
-            height: 120px;
-            width: auto;
-        }
-
-        .contact-info,
-        .social-media,
-        .resume {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-right: 20px;
-            padding-bottom: 20px;
-        }
-
-        .contact-header,
-        .social-media-header,
-        .resume-header {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .contact-info a,
-        .social-media a,
-        .resume a {
-            color: #FFFFFF; /* White text for contact and social media links */
-            text-decoration: none;
-            margin: 5px 0;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-info a img,
-        .social-media a img,
-        .resume a img {
-            width: 28px;
-            margin-right: 5px;
-        }
-        .copyright {
-            position: absolute;
-            bottom: 0;
-            margin: 20px;
-            font-size: 12px; /* Adjust the font size as needed */
-            color: #FFFFFF; /* Adjust the color based on your design */
-        }
-         @media only screen and (min-width: 769px) {
-            .copyright {
-                bottom: 0;
-                right: 0;
-            }
-        }
-
-        @media only screen and (max-width: 768px) {
-            .copyright {
-                left: 0;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Larger Screens Navbar -->
-    <div class="navbar-large">
-        <div class="navbar-left">
-            <img src="./images/CoryFreestyleLogoBlueWithGoldNoText.png" alt="Cory Freestyle Logo" class="navbar-logo">
-            <a id="logo" href="./">Cory Freestyle</a>
-        </div>
-        <div>
-            <!-- Update for each new page -->
-            <a href="./">Home</a>
-            <a href="./about">About Me</a>
-            <a id="active" href="./contact">Contact</a>
-        </div>
+    <div id="thank-you-message">
+        <p>Thank you for your message! We'll get back to you soon.</p>
     </div>
-
-    <!-- Smaller Screens Navbar -->
-    <div class="navbar-small">
-        <div>
-            <div class="menu-icon" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <!-- Update for each new page -->
-            <a href="./">Home</a>
-            <a href="./about">About Me</a>
-            <a id="active" href="./contact">Contact</a>
-        </div>
-        <a id="logo" href="./">Cory Freestyle</a>
-    </div>
-
-    <!-- All Content -->
-    <div class="content">
-
-
-   
-    <div id="contact-form-container">
-        <form id="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="subject">Subject:</label>
-            <input type="text" id="subject" name="subject" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-
-            <div class="g-recaptcha" data-sitekey="6LeESD4pAAAAANAn4oKqAvhsah0C_EPVVGGf5CZa"></div>
-
-            <button type="submit">Submit</button>
-        </form>
-
-        <div id="thank-you-message">
-            <p>Thank you for your message! We'll get back to you soon.</p>
-        </div>
-    </div>
-
-
-
-    </div>
-     <!-- Footer -->
-    </div>
-    <footer>
-        <div class="footer-logo">
-            <img src="./images/CoryFreestyleLogoBlueWithGoldOutline.png" alt="Cory Freestyle Full Logo">
-        </div>
-        <div class="contact-info">
-            <div class="contact-header">Contact</div>
-            <a href="mailto:info@coryfreestyle.com" style="text-decoration: underline;">info@coryfreestyle.com</a>
-        </div>
-        <div class="social-media">
-            <div class="social-media-header">Social Media</div>
-            <a href="https://www.instagram.com/coryfreestyle/" target="_blank">
-                <img src="./images/instagram-48.png" alt="Instagram Icon"> Instagram
-            </a>
-            <a href="https://www.facebook.com/coryblackfs" target="_blank">
-                <img src="./images/facebook-48.png" alt="Facebook Icon"> Facebook
-            </a>
-        </div>
-        <div class="resume">
-            <div class="resume-header">Résumé</div>
-            <a href="./assets/CoryBlack-Resume.pdf" style="text-decoration: underline;" target="_blank">Download my résumé</a>
-        </div>
-        <div class="copyright">
-            &copy; 2023 Cory Black. All rights reserved.
-        </div>
-    </footer>
-    <script src="navbar-functionality.js" defer></script>
-    <script>
-		document.addEventListener('DOMContentLoaded', function () {
-	        const form = document.getElementById('contact-form');
-	        const thankYouMessage = document.getElementById('thank-you-message');
-
-	        form.addEventListener('submit', async function (event) {
-	            event.preventDefault(); // Prevent the default form submission
-
-	            // Verify reCAPTCHA before proceeding
-	            const recaptchaResponse = grecaptcha.getResponse();
-	            if (!recaptchaResponse) {
-	                // Alert the user if reCAPTCHA is not verified
-	                alert('Please complete the reCAPTCHA before submitting the form.');
-	                return;
-	            }
-
-	            // Assuming you've already validated the form fields here
-
-	            // Display the thank you message
-	            thankYouMessage.style.display = 'block';
-
-	            // Hide the form
-	            form.style.display = 'none';
-
-	            // Send the form data to Formspree using fetch
-	            const formData = new FormData(form);
-	            try {
-	                await fetch('https://formspree.io/f/mpzvavjn', {
-	                    method: 'POST',
-	                    headers: {
-	                        'Accept': 'application/json',
-	                    },
-	                    body: formData,
-	                });
-	            } catch (error) {
-	                console.error('Error submitting form:', error);
-	            }
-	        });
-	    });
-    </script>
-
-</body>
-</html>
+</div>

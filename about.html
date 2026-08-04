@@ -1,759 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./images/soccerBallFavicon.png" type="image/png">
-    <title>Cory Freestyle</title>
-    <!-- Link to Pacifico font -->
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+---
+layout: default
+title: Cory Freestyle
+extra_css:
+  - /assets/css/about.css
+head_extra: |
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+foot_extra: |
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+     $(document).ready(function () {
+          var $carousel = $('.my-freestyle-journey-carousel');
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to bottom, #F2F5F8, #B0C5D9);
-            color: #001F3F; /* Dark blue text */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+          $carousel.slick({
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              prevArrow: '<button class="slick-prev" aria-label="Previous" type="button">Previous</button>',
+              nextArrow: '<button class="slick-next" aria-label="Next" type="button">Next</button>',
+              responsive: [
+                  {
+                      breakpoint: 768,
+                      settings: {
+                          slidesToShow: 1,
+                          slidesToScroll: 1,
+                      },
+                  },
+              ],
+          });
 
-        /* Larger Screens Navbar Style */
-        .navbar-large {
-            background-color: #001F3F; /* Dark blue navbar background */
-            overflow: hidden;
-            padding: 10px 32px 10px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+          $('.slick-prev').hide();
 
-        .navbar-left {
-            display: flex;
-            align-items: center;
-        }
+          $carousel.on('afterChange', function (event, slick, currentSlide, nextSlide) {
+              if (currentSlide === 0) {
+                  $('.slick-prev').hide();
+                  $('.slick-next').show();
+              } else if (currentSlide >= slick.slideCount - slick.options.slidesToShow) {
+                  $('.slick-next').hide();
+                  $('.slick-prev').show();
+              } else {
+                  $('.slick-prev, .slick-next').show();
+              }
+          });
+      });
+  </script>
+---
+<div class="photo-gallery">
+    {% for photo in site.data.about_top_photos %}
+    <img src="{{ photo.image | relative_url }}" alt="{{ photo.alt }}">
+    {% endfor %}
+</div>
 
-        .navbar-logo {
-            height: 80px;
-        }
-
-        .navbar-large a {
-            color: #FFFFFF; /* White text in the navbar */
-            text-decoration: none;
-            padding: 14px 16px;
-            transition: background-color 0.3s, color 0.3s, border-radius 0.3s;
-        }
-
-        .navbar-large a:hover {
-            background-color: #FFD700; /* Gold hover color */
-            color: #001F3F; /* Dark blue text on hover */
-            border-radius: 5px; /* Add border-radius for a rounded look on hover */
-        }
-
-        .navbar-large #logo {
-            color: #FFFFFF; /* White text for the logo */
-            text-decoration: none;
-            padding: 14px 16px;
-            font-size: 40px;
-            font-family: 'Lobster', sans-serif;
-        }
-
-        .navbar-large #logo:hover {
-            color: #FFFFFF; /* Keep the default color on hover (same as the regular state) */
-            background-color: transparent; /* Remove any background color change on hover */
-        }
-
-        /* Smaller Screens Navbar Style */
-        .navbar-small {
-            background-color: #001F3F; /* Dark blue navbar background */
-            overflow: hidden;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-large a#active {
-            text-decoration: underline;
-        }
-
-        .menu-icon {
-            display: none;
-            cursor: pointer;
-        }
-
-        .menu-icon div {
-            width: 25px;
-            height: 3px;
-            background-color: #FFFFFF; /* White menu icon color */
-            margin: 6px 0;
-            transition: 0.4s;
-        }
-
-        @media only screen and (max-width: 768px) {
-            .navbar-large {
-                display: none;
-            }
-
-            .menu-icon {
-                display: block;
-                padding-top: 24px;
-            }
-
-            .menu-icon.active div:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .menu-icon.active div:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-icon.active div:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            .navbar-small {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-            }
-
-            .navbar-small #logo {
-                display: block;
-                width: 100%;
-                text-align: left;
-                padding: 14px 16px;
-                color: #FFFFFF; /* White text for the logo */
-                font-size: 40px;
-                transition: 0.3s;
-                text-decoration: none; /* Remove underline */
-                font-family: 'Lobster', sans-serif;
-            }
-
-            .navbar-small a:not(#logo) {
-                display: block;
-                width: 100%;
-                text-align: left;
-                padding: 14px 16px;
-                color: #FFFFFF; /* White text for menu items */
-                transition: 0.3s;
-                display: none;
-            }
-
-            .navbar-small a:not(#active) {
-                text-decoration: none;
-            }
-        }
-
-        @media only screen and (min-width: 769px) {
-            .navbar-small {
-                display: none;
-            }
-        }
-
-        .content {
-            flex: 1;
-        }
-
-        .photo-gallery {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
-            overflow: hidden; /* Ensure overflow is hidden on smaller screens */
-        }
-
-        .photo-gallery img {
-            width: 30%; /* Adjust as needed */
-            border-radius: 8px;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Media query for small screens */
-        @media only screen and (max-width: 768px) {
-            .photo-gallery {
-                justify-content: center;
-            }
-
-            .photo-gallery img {
-                width: 70%; /* Adjust as needed for the central image on small screens */
-                order: 2; /* Set the order of the middle image to be displayed in the center */
-            }
-
-            .photo-gallery img:first-child,
-            .photo-gallery img:last-child {
-                display: none; /* Hide the first and last images on small screens */
-            }
-        }
-
-        /* About Me Style */
-        .about-me-container {
-            max-width: 90%;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(to right, #001F3F, #004080);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            color: #FFFFFF;
-        }
-
-        .about-me-section {
-            border-bottom: 1px solid #eee; /* Light gray border between sections */
-        }
-
-        /* Image Carousel Style */
-        .my-freestyle-journey-carousel {
-            margin: 20px auto 0 auto;
-            width: 95%; /* Adjust as needed */
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 1s ease;
-            -webkit-transition: opacity 1s ease;
-        }
-
-        .my-freestyle-journey-carousel.slick-initialized {
-            visibility: visible;
-            opacity: 1;    
-        }
-
-        .about-me-image-container {
-            position: relative;
-            overflow: hidden;
-            margin: 10px; /* Remove margin to eliminate space between images */
-            width: 50%; /* Adjust as needed */
-        }
-
-        .about-me-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Maintain aspect ratio without distortion */
-        }
-
-        .about-me-description a {
-            color: #FFFFFF; /* White text for the link */
-            text-decoration: underline; /* Add underline to the link */
-        }
-
-        .about-me-description {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #FFFFFF;
-            font-size: 18px;
-            font-weight: bold;
-            opacity: 0;
-        }
-
-        @media only screen and (min-width: 769px) {
-            .my-freestyle-journey-carousel {
-                margin: 0 auto 10px auto;
-            }
-
-            .about-me-image-container img {
-                transition: opacity 0.3s ease-in-out;
-            }
-
-            .about-me-description {
-                transition: opacity 0.3s ease-in-out;
-            }
-
-            .about-me-image-container:hover img {
-                /* Change opacity lower if you want higher opaqueness over the images in carousel */
-                opacity: 0.3;
-            }
-
-            .about-me-image-container:hover .about-me-description {
-                opacity: 1;
-            }
-         }
-
-        /* Media query for small screens */
-        @media only screen and (max-width: 768px) {
-            .about-me-image-container {
-                width: 100%; /* Adjust as needed for full-width on small screens */
-            }
-
-            .about-me-description {
-                position: relative;
-                text-align: center;
-                color: #fff; /* Text color */
-                opacity: 1; /* Show the text without hover effect on small screens */
-                transition: none; /* Remove transition on small screens */
-                margin-top: 60px; /* Add margin to separate text from the image */
-                margin-bottom: -40px;
-            }
-
-            .about-me-image-container img {
-                transition: none;
-            }
-        }
-
-        /* Client Collaborations Style */
-        .client-collaborations {
-            max-width: 90%;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(to right, #001F3F, #004080);
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            color: #FFFFFF;
-        }
-
-        .logo-gallery {
-            display: grid;
-            grid-template-columns: repeat(10, 1fr); /* Adjust the number of columns as needed */
-            gap: 20px; /* Adjust the gap between logos as needed */
-            margin-top: 10px;
-        }
-
-         @media only screen and (max-width: 768px) {
-            .logo-gallery {
-                grid-template-columns: repeat(5, 1fr);
-            }
-        }
-
-        .logo-gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .logo-gallery img:hover {
-            opacity: 0.7;
-        }
-
-        .instagram-section a {
-            color: #3498db; /* Change this to your preferred color code */
-        }
-
-        /* Footer Style */
-        footer {
-            background-color: #001F3F; /* Dark blue footer background */
-            color: #FFFFFF; /* White text in the footer */
-            text-align: center;
-            padding: 28px 40px 0px 40px;
-            bottom: 0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-top: 10px;
-            position: relative;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-            padding-bottom: 20px;
-        }
-        
-        .footer-logo img {
-            height: 120px;
-            width: auto;
-        }
-
-        .contact-info,
-        .social-media,
-        .resume {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-right: 20px;
-            padding-bottom: 20px;
-        }
-
-        .contact-header,
-        .social-media-header,
-        .resume-header {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .contact-info a,
-        .social-media a,
-        .resume a {
-            color: #FFFFFF; /* White text for contact and social media links */
-            text-decoration: none;
-            margin: 5px 0;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-info a img,
-        .social-media a img,
-        .resume a img {
-            width: 28px;
-            margin-right: 5px;
-        }
-
-        .copyright {
-            position: absolute;
-            bottom: 0;
-            margin: 20px;
-            font-size: 12px; /* Adjust the font size as needed */
-            color: #FFFFFF; /* Adjust the color based on your design */
-        }
-         @media only screen and (min-width: 769px) {
-            .copyright {
-                bottom: 0;
-                right: 0;
-            }
-        }
-
-        @media only screen and (max-width: 768px) {
-            .copyright {
-                left: 0;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="navbar-large">
-        <div class="navbar-left">
-            <img src="./images/CoryFreestyleLogoBlueWithGoldNoText.png" alt="Cory Freestyle Logo" class="navbar-logo">
-            <a id="logo" href="./">Cory Freestyle</a>
-        </div>
-        <div>
-            <a href="./">Home</a>
-            <!-- Update for each new page -->
-            <a id="active" href="./about">About Me</a>
-            <a href="./contact">Contact</a>
-        </div>
+<div class="about-me-container">
+    <div class="about-me-section">
+        <h2>Where I Am Now</h2>
+        <p>
+            I’m currently based in Seattle performing at various local events and gearing up for performances for the 2026 FIFA World Cup. I’m always open to exciting opportunities to share my act and connect with new audiences.
+        </p>
     </div>
-
-    <!-- Smaller Screens Navbar -->
-    <div class="navbar-small">
-        <div>
-            <div class="menu-icon" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <a href="./">Home</a>
-            <!-- Update for each new page -->
-            <a id="active" href="./about">About Me</a>
-            <a href="./contact">Contact</a>
-        </div>
-        <a id="logo" href="./">Cory Freestyle</a>
+    <div class="about-me-section">
+        <h2>About Me</h2>
+        <p>
+            Hi, I’m Cory Black. I’m a soccer freestyle and juggling performer based in Seattle with 16 years of freestyle experience and over 11 years of juggling. I’ve performed in over 300 live shows around the U.S., including stage productions, festivals, corporate events, and sports venues.
+        </p>
+        <p>
+            I’ve competed in freestyle football competitions around the world, including the <strong>Super Ball World Freestyle Football Championships</strong> in Prague. I also spent two years performing with the <a href="https://www.flynncreekcircus.com/" target="_blank" style="color: #FFD700;">Flynn Creek Circus</a>, where I’ve toured as both a solo and ensemble act.
+        </p>
+        <p>
+            Past clients include the Seattle Sounders, Moisture Festival, McDonald’s, and a variety of festivals and private events. I’m available for shows, promotions, and creative projects — <a href="{{ '/contact' | relative_url }}" style="color: #FFD700;">get in touch here</a>.
+        </p>
     </div>
-
-    <!-- All Content -->
-    <div class="content">
-
-    <div class="photo-gallery">
-            <img src="images/jugglingWithABalanceNew.JPG" alt="Juggling With A Balance">
-            <img src="images/fsHeadshotNew.jpg" alt="Freestyle Headshot">
-            <img src="images/baselBall.jpg" alt="BaselBall">
-        </div>
-
-
-        <div class="about-me-container">
-            <div class="about-me-section">
-                <h2>Where I Am Now</h2>
-                <p>
-                    I’m currently based in Seattle performing at various local events and gearing up for performances for the 2026 FIFA World Cup. I’m always open to exciting opportunities to share my act and connect with new audiences.
-                </p>
-            </div>
-            <div class="about-me-section">
-                <h2>About Me</h2>
-                <p>
-                    Hi, I’m Cory Black. I’m a soccer freestyle and juggling performer based in Seattle with 16 years of freestyle experience and over 11 years of juggling. I’ve performed in over 300 live shows around the U.S., including stage productions, festivals, corporate events, and sports venues.
-                </p>
-                <p>
-                    I’ve competed in freestyle football competitions around the world, including the <strong>Super Ball World Freestyle Football Championships</strong> in Prague. I also spent two years performing with the <a href="https://www.flynncreekcircus.com/" target="_blank" style="color: #FFD700;">Flynn Creek Circus</a>, where I’ve toured as both a solo and ensemble act.
-                </p>
-                <p>
-                    Past clients include the Seattle Sounders, Moisture Festival, McDonald’s, and a variety of festivals and private events. I’m available for shows, promotions, and creative projects — <a href="./contact" style="color: #FFD700;">get in touch here</a>.
-                </p>
-            </div>
-            <div class="about-me-section">
-                <h2>My Freestyle Journey</h2>
-                <p>
-                    Embark on a visual journey through my years of performing. Check out the gallery below to witness some of my most memorable events and behind-the-scenes moments.
-                </p>
-                <div class="my-freestyle-journey-carousel">
-                    <div class="about-me-image-container">
-                        <img src="images/CoryMoisturePoster2026.png" alt="Moisture Festival 2026">
-                        <div class="about-me-description">
-                            <a href="https://www.instagram.com/p/DWr5XidSjUP/" target="_blank"><p>Moisture Festival</p></a>
-                            <p>Apr. 1 - 5, 2025 | Seattle, Washington</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/FCC2025AboutMe.PNG" alt="Flynn Creek Circus 2025">
-                        <div class="about-me-description">
-                            <a href="https://www.instagram.com/p/DM0pOmRyqSM/" target="_blank"><p>Flynn Creek Circus</p></a>
-                            <p>June - December, 2025 | CA, OR, WA, USA</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/CascadeJugglingFestivalProfile.png" alt="Cascade Juggling Festival">
-                        <div class="about-me-description">
-                            <a href="https://www.instagram.com/p/DIsOqCON1ut/" target="_blank"><p>Cascade Juggling Festival</p></a>
-                            <p>May 9 - 11, 2025 | Bellingham, Washington</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/MoistureFestAd.png" alt="Moisture Festival 2025">
-                        <div class="about-me-description">
-                            <a href="https://www.instagram.com/p/DH71awdOmwQ/" target="_blank"><p>Moisture Festival</p></a>
-                            <p>Mar. 20 - 30, 2025 | Seattle, Washington</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/FCCWinterHeadshot.jpeg" alt="Flynn Creek Circus">
-                        <div class="about-me-description">
-                            <p><a href="https://www.instagram.com/reel/DD-Y20ESM-Q/" target="_blank">Flynn Creek Circus 2024/25 Winter Tour</a></p>
-                            <p>Dec. 19, 2024 - Jan. 5, 2025 | California, USA</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/FCCOutsideTent.jpg" alt="Flynn Creek Circus">
-                        <div class="about-me-description">
-                            <p><a href="https://www.instagram.com/p/DAg-MnzzXA5/?img_index=1" target="_blank">Flynn Creek Circus 2024 Tour</a></p>
-                            <p>July 1 - Oct. 29, 2024 | California & Oregon, USA</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/superball2023.jpg" alt="Super Ball 2023">
-                        <div class="about-me-description">
-                            <p><a href="https://www.instagram.com/p/CvqRS18t1KQ/" target="_blank">Super Ball World Freestyle Football Championships</a></p>
-                            <p>Aug. 6-11, 2023 | Prague, Czech Republic</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/theLostCircus.jpg" alt="The Lost Circus">
-                        <div class="about-me-description">
-                            <p><a href="https://www.instagram.com/p/C7w4OOWv6EU/?img_index=2" target="_blank">The Lost Circus</a></p>
-                            <p>May 31, 2024 | Seattle, Washington</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/ForeignJam.JPG" alt="Foreign Jam III">
-                        <div class="about-me-description">
-                            <p>Foreign Jam III Freestyle Competition - Top 8</p>
-                            <p>Jan. 27-29, 2023 | San Diego, California</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/AustinJugglefest.png" alt="Austin JuggleFest">
-                        <div class="about-me-description">
-                            <p><a href="https://www.instagram.com/p/DGd_6d1piTF/" target="_blank">Austin Jugglefest - Gala Show Performance</a></p>
-                            <p>Feb. 22, 2025 | Austin, Texas</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/boulderJugglingSquare.JPG" alt="Boulder Juggling Festival">
-                        <div class="about-me-description">
-                            <p>Boulder Juggling Festival - Gala Show Performance</p>
-                            <p>June 22, 2024 | Boulder, Colorado</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/RavePitchOpening.jpg" alt="Rave Pitch Opening">
-                        <div class="about-me-description">
-                            <p><a href="https://www.instagram.com/p/Cy1UgIzPSdU/?img_index=1" target="_blank">Sounders Rave Foundation - Pitch Opening Performance</a></p>
-                            <p>Sept. 28, 2023 | Renton, Washington</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/seattleTimesFeature.jpg" alt="Seattle Times Feature">
-                        <div class="about-me-description">
-                            <p><a href="https://www.seattletimes.com/sports/other-sports/freestyle-magician-excels-at-sleight-of-foot-with-a-soccer-ball/" target="_blank">Seattle Times Newspaper Feature</a></p>
-                            <p>Aug. 25, 2015 | Seattle, Washington</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/ForeignJamIV.png" alt="Foreign Jam IV">
-                        <div class="about-me-description">
-                            <p><a href="https://www.instagram.com/p/C7j-x0wPp-C/" target="_blank">Foreign Jam IV Freestyle Competition</a></p>
-                            <p>May 24-25, 2024 | Los Angeles, California</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/dodgeBallPerformance.jpg" alt="King of Swing Performance">
-                        <div class="about-me-description">
-                            <p><a href="https://www.instagram.com/p/CtDhyBVuWlo/?img_index=1" target="_blank">King of Swing Performance - Yesler Community Center</a></p>
-                            <p>May 31, 2023 | Seattle, Washington</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/baselball2023-1.jpg" alt="Basel Ball 2023">
-                        <div class="about-me-description">
-                            <p><a href="https://www.instagram.com/p/C0xSbAcvx2b/" target="_blank">Basel Ball Freestyle Competition - Top 8</a></p>
-                            <p>Dec. 8-9, 2023 | Miami, Florida</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/mondoJuggling.jpg" alt="Mondo Fest Juggling">
-                        <div class="about-me-description">
-                            <p><a href="https://www.instagram.com/p/CqL3_d9P88u/?img_index=1" target="_blank">Mondo Fest Gala Show Performance</a></p>
-                            <p>Mar. 4, 2023 | St. Paul Minnesota</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/BaselBall2022.JPG" alt="Basel Ball 2022">
-                        <div class="about-me-description">
-                            <p>Basel Ball Freestyle Competition - Top 8</p>
-                            <p>Dec. 3-4, 2022 | Miami, Florida</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/SuperBall2022.jpg" alt="Super Ball 2022">
-                        <div class="about-me-description">
-                            <p>Super Ball World Freestyle Football Championships</p>
-                            <p>Aug. 7-13, 2022 | Prague, Czech Republic</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/WffaUSOpen.JPG" alt="WFFA US Open">
-                        <div class="about-me-description">
-                            <p>WFFA US Open Freestyle Championships - Top 16</p>
-                            <p>July 2-3, 2022 | Daytona, Florida</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/SoundersPreGameEntertainment.jpg" alt="Seattle Sounders FC">
-                        <div class="about-me-description">
-                            <p>Seattle Sounders FC - Pregame Entertainment</p>
-                            <p>Summer 2021 | Seattle, Washington</p>
-                        </div>
-                    </div>
-                    <div class="about-me-image-container">
-                        <img src="images/eveningMagazineFeature.jpg" alt="Evening Magazine">
-                        <div class="about-me-description">
-                            <p><a href="https://www.king5.com/article/entertainment/television/programs/evening/cory-black-is-all-about-style/281-140105694" target="_blank">Evening Magazine TV Segment</a></p>
-                            <p>Sept. 28, 2015 | Seattle, Washington</p>
-                        </div>
-                    </div>
+    <div class="about-me-section">
+        <h2>My Freestyle Journey</h2>
+        <p>
+            Embark on a visual journey through my years of performing. Check out the gallery below to witness some of my most memorable events and behind-the-scenes moments.
+        </p>
+        <div class="my-freestyle-journey-carousel">
+            {% for item in site.data.gallery %}
+            <div class="about-me-image-container">
+                <img src="{{ item.image | relative_url }}" alt="{{ item.alt }}">
+                <div class="about-me-description">
+                    {% if item.link and item.link != "" %}
+                    <p><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></p>
+                    {% else %}
+                    <p>{{ item.title }}</p>
+                    {% endif %}
+                    <p>{{ item.date }}</p>
                 </div>
             </div>
-
-            <div class="about-me-section">
-                <h2>Collaborations</h2>
-                <p>
-                    Take a look at some of the companies I've had the pleasure of working with. Each logo represents a unique collaboration and memorable experience.
-                </p>
-                <div class="client-collaborations">
-                    <div class="logo-gallery">
-                        <img src="images/clients/moistureFestivalLogo.png" alt="Moisture Festival">
-                        <img src="images/clients/FlynnCreekLogo.png" alt="Flynn Creek Circus">
-                        <img src="images/clients/soundersLogo.jpg" alt="Sounders">
-                        <img src="images/clients/mcdonaldsLogo.JPG" alt="McDonalds">
-                        <img src="images/clients/toppsLogo.JPG" alt="Topps">
-                        <img src="images/clients/seattleTimesLogo.JPG" alt="Seattle Times">
-                        <img src="images/clients/raveLogo.jpg" alt="Rave">
-                        <img src="images/clients/boulderFestLogo.jpg" alt="Bolder Juggling Festival">
-                        <img src="images/clients/sea206Logo.png" alt="SEA206">
-                        <img src="images/clients/eveningMagazineLogo.jpg" alt="Evening Magazine">
-                        <img src="images/clients/washingtonYouthSoccerLogo.jpg" alt="Youth Soccer">
-                        <img src="images/clients/cityOfBellevueLogo.png" alt="City of Bellevue">
-                        <img src="images/clients/mondoFestLogo.JPG" alt="Mondo">
-                        <img src="images/clients/AustinJuggleFestLogo.png" alt="Austin JuggleFest">
-                        <img src="images/clients/CascadeJugglefest.png" alt="Cascade Juggling Festival">
-                        <img src="images/clients/LockLabLogo.png" alt="Locklab">
-                        <img src="images/clients/DoverEntertainmentLogo.png" alt="Dover Entertainment - Pacific Place">
-                        <img src="images/clients/HomeTeamSeattle.png" alt="Hometeam Seattle">
-                        <img src="images/clients/BoysAndGirlsClub.png" alt="Boys and Girls Club Bellevue">
-                        <img src="images/clients/SEAAirportLogo.png" alt="SEA Airport">
-                        <img src="images/clients/Tukwila.png" alt="City of Tukwila">
-                        <img src="images/clients/PacificPlace.png" alt="Pacific Place Mall">
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-me-section">
-                <h2>Stay Connected</h2>
-                <p class="instagram-section">
-                    Follow me on <a href="https://www.instagram.com/coryfreestyle/" target="_blank" style="color: #FFD700;">Instagram</a> to stay updated on my latest freestyle soccer performances and behind-the-scenes moments.
-                </p>
-                <!-- Placeholder for Instagram posts -->
-                <div id="instagram-feed"></div>
-            </div>
-
+            {% endfor %}
         </div>
     </div>
-     
-    <!-- Footer -->
+
+    <div class="about-me-section">
+        <h2>Collaborations</h2>
+        <p>
+            Take a look at some of the companies I've had the pleasure of working with. Each logo represents a unique collaboration and memorable experience.
+        </p>
+        <div class="client-collaborations">
+            <div class="logo-gallery">
+                {% for client in site.data.clients %}
+                <img src="{{ client.image | relative_url }}" alt="{{ client.alt }}">
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    <footer>
-        <div class="footer-logo">
-            <img src="./images/CoryFreestyleLogoBlueWithGoldOutline.png" alt="Cory Freestyle Full Logo">
-        </div>
-        <div class="contact-info">
-            <div class="contact-header">Contact</div>
-            <a href="mailto:info@coryfreestyle.com" style="text-decoration: underline;">info@coryfreestyle.com</a>
-        </div>
-        <div class="social-media">
-            <div class="social-media-header">Social Media</div>
-            <a href="https://www.instagram.com/coryfreestyle/" target="_blank">
-                <img src="./images/instagram-48.png" alt="Instagram Icon"> Instagram
-            </a>
-            <a href="https://www.facebook.com/coryblackfs" target="_blank">
-                <img src="./images/facebook-48.png" alt="Facebook Icon"> Facebook
-            </a>
-        </div>
-        <div class="resume">
-            <div class="resume-header">Résumé</div>
-            <a href="./assets/CoryBlack-Resume.pdf" style="text-decoration: underline;" target="_blank">Download my résumé</a>
-        </div>
-        <div class="copyright">
-            &copy; 2023 Cory Black. All rights reserved.
-        </div>
-    </footer>
 
-    <script src="navbar-functionality.js" defer></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script>
-       $(document).ready(function () {
-            var $carousel = $('.my-freestyle-journey-carousel');
-
-            $carousel.slick({
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                prevArrow: '<button class="slick-prev" aria-label="Previous" type="button">Previous</button>',
-                nextArrow: '<button class="slick-next" aria-label="Next" type="button">Next</button>',
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1,
-                        },
-                    },
-                ],
-            });
-
-            // Initially, hide the prev button since we're on the first slide
-            $('.slick-prev').hide();
-
-            // Update the visibility of prev and next arrows
-            $carousel.on('afterChange', function (event, slick, currentSlide, nextSlide) {
-                if (currentSlide === 0) {
-                    $('.slick-prev').hide();
-                    $('.slick-next').show(); // Show next button when not on the first slide
-                } else if (currentSlide >= slick.slideCount - slick.options.slidesToShow) {
-                    $('.slick-next').hide();
-                    $('.slick-prev').show(); // Show prev button when not on the last slide
-                } else {
-                    $('.slick-prev, .slick-next').show();
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+    <div class="about-me-section">
+        <h2>Stay Connected</h2>
+        <p class="instagram-section">
+            Follow me on <a href="https://www.instagram.com/coryfreestyle/" target="_blank" style="color: #FFD700;">Instagram</a> to stay updated on my latest freestyle soccer performances and behind-the-scenes moments.
+        </p>
+        <div id="instagram-feed"></div>
+    </div>
+</div>

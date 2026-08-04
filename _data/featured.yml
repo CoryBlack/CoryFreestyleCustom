@@ -1,0 +1,18 @@
+- name: Google
+  image: /images/Google_wordmark.svg.webp
+  height: 40
+- name: Nordstrom
+  image: /images/nordstrom-com-wordmark.png
+  height: 28
+- name: Seattle Sounders FC
+  image: /images/Seattle_Sounders_FC_wordmark.svg.webp
+  height: 38
+- name: Pfizer
+  image: /images/pfizer-com-wordmark.png
+  height: 44
+- name: Seattle Times
+  image: /images/The_Seattle_Times_logo.svg.webp
+  height: 27
+- name: Port of Seattle
+  image: /images/Port_of_Seattle_Logo.svg.webp
+  height: 44

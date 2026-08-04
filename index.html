@@ -1,889 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Open Graph -->
-    <meta property="og:title" content="Cory Freestyle | Circus & Freestyle Football Performer">
-    <meta property="og:description" content="Professional circus and freestyle football performer available for events, festivals, and touring shows worldwide.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.coryfreestyle.com/">
-    <meta property="og:image" content="https://www.coryfreestyle.com/images/og-preview.png">
-    <!-- X.com -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cory Freestyle | Circus Performer">
-    <meta name="twitter:description" content="Freestyle football and modern circus performance for live events and touring shows.">
-    <meta name="twitter:image" content="https://www.coryfreestyle.com/images/og-preview.png">
-
-    <link rel="icon" href="./images/soccerBallFavicon.png" type="image/png">
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-    <meta name="robots" content="index, follow">
-
-    <title>Cory Freestyle</title>
-    <!-- Link to Pacifico font -->
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to bottom, #F2F5F8, #B0C5D9);
-            color: #001F3F; /* Dark blue text */
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Larger Screens Navbar Style */
-        .navbar-large {
-            background-color: #001F3F; /* Dark blue navbar background */
-            overflow: hidden;
-            padding: 10px 32px 10px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-left {
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar-logo {
-            height: 80px;
-        }
-
-        .navbar-large a {
-            color: #FFFFFF; /* White text in the navbar */
-            text-decoration: none;
-            padding: 14px 16px;
-            transition: background-color 0.3s, color 0.3s, border-radius 0.3s;
-        }
-
-        .navbar-large a:hover {
-            background-color: #FFD700; /* Gold hover color */
-            color: #001F3F; /* Dark blue text on hover */
-            border-radius: 5px; /* Add border-radius for a rounded look on hover */
-        }
-
-        .navbar-large #logo {
-            color: #FFFFFF; /* White text for the logo */
-            text-decoration: none;
-            padding: 14px 16px;
-            font-size: 40px;
-            font-family: 'Lobster', sans-serif;
-        }
-
-        .navbar-large #logo:hover {
-            color: #FFFFFF; /* Keep the default color on hover (same as the regular state) */
-            background-color: transparent; /* Remove any background color change on hover */
-        }
-
-        /* Smaller Screens Navbar Style */
-        .navbar-small {
-            background-color: #001F3F; /* Dark blue navbar background */
-            overflow: hidden;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-large a#active {
-            text-decoration: underline;
-        }
-
-        .menu-icon {
-            display: none;
-            cursor: pointer;
-        }
-
-        .menu-icon div {
-            width: 25px;
-            height: 3px;
-            background-color: #FFFFFF; /* White menu icon color */
-            margin: 6px 0;
-            transition: 0.4s;
-        }
-
-        @media only screen and (max-width: 768px) {
-            .navbar-large {
-                display: none;
-            }
-
-            .menu-icon {
-                display: block;
-                padding-top: 24px;
-            }
-
-            .menu-icon.active div:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .menu-icon.active div:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-icon.active div:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            .navbar-small {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-            }
-
-            .navbar-small #logo {
-                display: block;
-                width: 100%;
-                text-align: left;
-                padding: 14px 16px;
-                color: #FFFFFF; /* White text for the logo */
-                font-size: 40px;
-                transition: 0.3s;
-                text-decoration: none; /* Remove underline */
-                font-family: 'Lobster', sans-serif;
-            }
-
-            .navbar-small a:not(#logo) {
-                display: block;
-                width: 100%;
-                text-align: left;
-                padding: 14px 16px;
-                color: #FFFFFF; /* White text for menu items */
-                transition: 0.3s;
-                display: none;
-            }
-
-            .navbar-small a:not(#active) {
-                text-decoration: none;
-            }
-        }
-
-        @media only screen and (min-width: 769px) {
-            .navbar-small {
-                display: none;
-            }
-        }
-
-        .content {
-            flex: 1;
-        }
-
-        /*-----------------------------------------------------------------------*/
-        /* Images at top of homepage style */
-        /*-----------------------------------------------------------------------*/
-        .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 25%;
-            width: 50%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
-        }
-
-        /* Adjust the position for small screens */
-        @media only screen and (max-width: 768px) {
-            .image-overlay {
-                width: 60%;
-                left: 40%;
-            }
-        }
-
-        .overlay-text {
-            font-family: 'Arial', sans-serif;
-            font-size: 36px; /* Adjust as needed */
-            font-weight: bold;
-            color: #FFFFFF; /* White text */
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Subtle text shadow */
-        }
-
-        @media only screen and (max-width: 768px) {
-            .overlay-text {
-                font-size: 22px; /* Decrease font size for smaller screens if necessary */
-            }
-        }
-
-        .top-background-images {
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: space-between; /* Add space between the images */
-            overflow: hidden;
-        }
-
-        .top-background-images img {
-            width: 100%; /* Make images take up full width by default */
-        }
-
-        @media only screen and (max-width: 768px) {
-            /* For smaller screens, hide the second image */
-            .top-background-images img:first-child {
-                display: none;
-            }
-        }
-
-        @media only screen and (min-width: 769px) {
-            /* For larger screens, show two images side by side */
-            .top-background-images img {
-                width: 33.333%;
-                max-width: 100%;
-                object-fit: cover;
-            }
-
-            .top-background-images img:last-child {
-                margin-right: 0; /* No margin for the last image */
-            }
-        }
-
-        /*-----------------------------------------------------------------------*/
-        /* Hero Video Section */
-        /*-----------------------------------------------------------------------*/
-
-        .hero-container {
-            position: relative;
-            overflow: hidden;
-            height: 500px;
-        }
-
-        /* HERO VIDEO */
-
-        .hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 25%;
-            display: block;
-        }
-
-        /* DARK GRADIENT OVER VIDEO */
-
-        .hero-container::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-
-            background: linear-gradient(
-                90deg,
-                rgba(0, 0, 0, 0.65) 0%,
-                rgba(0, 0, 0, 0.35) 35%,
-                rgba(0, 0, 0, 0) 70%
-            );
-
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        /* TEXT OVERLAY */
-
-        .hero-overlay {
-            position: absolute;
-
-            left: 4%;
-            top: 50%;
-            transform: translateY(-50%);
-
-            max-width: 550px;
-
-            color: white;
-            text-align: left;
-
-            z-index: 2;
-        }
-
-        /* HEADLINE */
-
-        .hero-overlay h1 {
-            font-size: 2.6rem;
-            font-weight: 600;
-            line-height: 1.1;
-
-            margin: 0 0 12px;
-
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
-        }
-
-        /* SUBTITLE */
-
-        .hero-overlay p {
-            font-size: 1.25rem;
-            line-height: 1.5;
-
-            margin: 0 0 24px;
-
-            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
-        }
-
-        /* BUTTON ROW */
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        /* BUTTONS */
-
-        .hero-button-primary,
-        .hero-button-secondary {
-            text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 6px;
-            font-weight: 700;
-            transition: all 0.2s ease;
-        }
-
-        /* PRIMARY BUTTON */
-
-        .hero-button-primary {
-            background: #f3c54d;
-            color: #05233d;
-        }
-
-        .hero-button-primary:hover {
-            opacity: 0.9;
-        }
-
-        /* SECONDARY BUTTON */
-
-        .hero-button-secondary {
-            border: 2px solid white;
-            color: white;
-        }
-
-        .hero-button-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 768px) {
-
-            .hero-container {
-                height: auto;
-                overflow: visible;
-                background: #05233d;
-            }
-
-            .hero-video {
-                height: 360px;
-                object-fit: cover;
-                object-position: center center;
-            }
-
-            .hero-container::before {
-                display: none;
-            }
-
-            .hero-overlay {
-                position: static;
-                transform: none;
-
-                max-width: none;
-                padding: 28px 20px 32px;
-
-                color: white;
-                text-align: center;
-                background: #05233d;
-            }
-
-            .hero-overlay h1 {
-                font-size: 2rem;
-                margin: 0 0 12px;
-                text-shadow: none;
-            }
-
-            .hero-overlay p {
-                font-size: 1rem;
-                margin: 0 0 22px;
-                text-shadow: none;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-                gap: 10px;
-            }
-
-            .hero-button-primary,
-            .hero-button-secondary {
-                padding: 12px 18px;
-                font-size: 0.9rem;
-            }
-        }
-
-        /*-----------------------------------------------------------------------*/
-        /* Featured By Section */
-        /*-----------------------------------------------------------------------*/
-
-        .featured-by {
-          background: #05233d;
-          padding: 40px 20px;
-        }
-        .featured-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          text-align: center;
-        }
-        .featured-label {
-          margin: 0 0 24px;
-          font-size: 0.8rem;
-          font-weight: 700;
-          letter-spacing: 0.25em;
-          text-transform: uppercase;
-          color: rgba(255,255,255,0.65);
-        }
-        .featured-logos {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 36px;
-        }
-        .featured-logos span {
-          color: white;
-          font-size: 1.3rem;
-          font-weight: 800;
-          letter-spacing: 0.03em;
-          white-space: nowrap;
-          opacity: 0.95;
-        }
-
-        /*-----------------------------------------------------------------------*/
-        /* About Me Section */
-        /*-----------------------------------------------------------------------*/
-        .about-me-section {
-            background: linear-gradient(to right, #001F3F, #004080);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px auto; /* Center the section horizontally */
-            max-width: 90%; /* Set a maximum width for better readability */
-            color: #FFFFFF;
-        }
-
-        /*-----------------------------------------------------------------------*/
-        /* Upcoming Events Section */
-        /*-----------------------------------------------------------------------*/
-        .event-flex-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .upcoming-shows-section a:hover img {
-            transform: scale(1.05);
-        }
-        .upcoming-shows-section a:hover p {
-            color: #004080;
-        }
-
-        @media only screen and (min-width: 768px) {
-            .upcoming-shows-section {
-                padding: 40px 20px;
-            }
-        }
-
-        @media only screen and (max-width: 768px) {
-            .upcoming-shows-section {
-                padding: 0px 20px;
-            }
-
-            .event-flex-container {
-                gap: 0px;
-            }
-        }
-
-        /*-----------------------------------------------------------------------*/
-        /* Videos Section */
-        /*-----------------------------------------------------------------------*/
-       .videos-container {
-            width: 100%;
-        }
-
-        .video-container {
-            margin-bottom: 20px; /* Add some space between videos */
-        }
-
-        @media only screen and (min-width: 769px) {
-            .videos-container {
-                display: flex;
-                justify-content: space-around;
-                flex-wrap: wrap;
-            }
-            .video-container iframe {
-                width: 560;
-                height: 315;
-            }
-        }
-
-        @media only screen and (max-width: 768px) {
-            .video-container {
-              max-width: 560px;
-              margin: 0px auto;
-            }
-
-            .video-container > div {
-              position: relative;
-              padding-bottom: 56.25%;
-              height: 0px;
-            }
-
-            .video-container iframe {
-              position: absolute;
-              top: 0px;
-              left: 0px;
-              width: 100%;
-              height: 100%;
-            }
-        }
-
-        /*-----------------------------------------------------------------------*/
-        /* Footer Style */
-        /*-----------------------------------------------------------------------*/
-        footer {
-            background-color: #001F3F; /* Dark blue footer background */
-            color: #FFFFFF; /* White text in the footer */
-            text-align: center;
-            padding: 28px 40px 0px 40px;
-            bottom: 0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-top: 10px;
-            position: relative;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-            padding-bottom: 20px;
-        }
-
-        .footer-logo img {
-            height: 120px;
-            width: auto;
-        }
-
-        .contact-info,
-        .social-media,
-        .resume {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-right: 20px;
-            padding-bottom: 20px;
-        }
-
-        .contact-header,
-        .social-media-header,
-        .resume-header {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .contact-info a,
-        .social-media a,
-        .resume a {
-            color: #FFFFFF; /* White text for contact and social media links */
-            text-decoration: none;
-            margin: 5px 0;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-info a img,
-        .social-media a img,
-        .resume a img {
-            width: 28px;
-            margin-right: 5px;
-        }
-        .copyright {
-            position: absolute;
-            bottom: 0;
-            margin: 20px;
-            font-size: 12px; /* Adjust the font size as needed */
-            color: #FFFFFF; /* Adjust the color based on your design */
-        }
-         @media only screen and (min-width: 769px) {
-            .copyright {
-                bottom: 0;
-                right: 0;
-            }
-        }
-
-        @media only screen and (max-width: 768px) {
-            .copyright {
-                left: 0;
-            }
-        }
-        /*-----------------------------------------------------------------------*/
-    </style>
-</head>
-<body>
-    <!---------------------------------------------------------------------------
-                            Larger Screens Navbar
-    ---------------------------------------------------------------------------->
-    <div class="navbar-large">
-        <div class="navbar-left">
-            <img src="./images/CoryFreestyleLogoBlueWithGoldNoText.png" alt="Cory Freestyle Logo" class="navbar-logo">
-            <a id="logo" href="./">Cory Freestyle</a>
-        </div>
-        <div>
-            <!-- Update for each new page -->
-            <a id="active" href="./">Home</a>
-            <a href="./about">About Me</a>
-            <a href="./contact">Contact</a>
-        </div>
-    </div>
-
-    <!-- Smaller Screens Navbar -->
-    <div class="navbar-small">
-        <div>
-            <div class="menu-icon" onclick="toggleMenu()">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-            <!-- Update for each new page -->
-            <a id="active" href="./">Home</a>
-            <a href="./about">About Me</a>
-            <a href="./contact">Contact</a>
-        </div>
-        <a id="logo" href="./">Cory Freestyle</a>
-    </div>
-
-
-    <!---------------------------------------------------------------------------
-                            Body Content
-    ---------------------------------------------------------------------------->
-    <div class="content">
-
-        <!-- Top Images -->
-        <!-- <div class="top-background-images"> -->
-            <!-- <div class="image-overlay">
-                <div class="overlay-text">
-                    Soccer Freestyle:
-                    Transforming Soccer into Art
-                </div>
-            </div>
-            <img src="./images/applause.jpg" alt="Image 1">
-            <img src="./images/usopen.jpg" alt="Image 2"> -->
- <!--            <img src="./images/dragonAtComp.jpg" alt="Image 1">
-            <img src="./images/fsHeadshotNew.jpg" alt="Image 2">
-            <img src="./images/5ballMoisture2025.png" alt="Image 3">
-        </div> -->
-
-        <section class="hero-video-section">
-            <div class="hero-container">
-                <video
-                    class="hero-video"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    preload="auto"
-                    poster="./images/HeroPlaceholder.png">
-                    <source src="./videos/homepage-hero.mp4?v=2" type="video/mp4">
-                </video>
-                <div class="hero-overlay">
-                    <h1>Professional Freestyle Soccer Performer & Juggler</h1>
-                    <p>
-                        Based in Seattle • Available for Events Nationwide
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="./contact.html" class="hero-button-primary">
-                            Book a Performance
-                        </a>
-                        <a href="#showreels" class="hero-button-secondary">
-                            Watch Showreel
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!---------------------------------------------------------------------------
-                            Featured By
-        ---------------------------------------------------------------------------->
-
-        <section class="featured-by">
-          <div class="featured-container">
-            <p class="featured-label">FEATURED BY</p>
-            <div class="featured-logos">
-              <span>FIFA WORLD CUP 26™</span>
-              <span>SEATTLE SOUNDERS FC</span>
-              <span>MCDONALD'S</span>
-              <span>SEATTLE TIMES</span>
-              <span>PORT OF SEATTLE</span>
-              <span>MOISTURE FESTIVAL</span>
-            </div>
-          </div>
-        </section>
-
-    <!---------------------------------------------------------------------------
-                            About Me
-    ---------------------------------------------------------------------------->
-        <div class="about-me-section">
+---
+layout: default
+title: Cory Freestyle
+og_title: "Cory Freestyle | Circus & Freestyle Football Performer"
+og_description: "Professional circus and freestyle football performer available for events, festivals, and touring shows worldwide."
+extra_css:
+  - /assets/css/home.css
+---
+<section class="hero-video-section">
+    <div class="hero-container">
+        <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            poster="{{ '/images/HeroPlaceholder.png' | relative_url }}">
+            <source src="{{ '/videos/homepage-hero.mp4?v=2' | relative_url }}" type="video/mp4">
+        </video>
+        <div class="hero-overlay">
+            <h1>Professional Freestyle Soccer Performer &amp; Juggler</h1>
             <p>
-                I’m a professional circus artist currently in Seattle gearing up for a summer full of performances for the 2026 FIFA World Cup. With over 16 years of experience in football freestyle and juggling, I’ve brought my act to festivals, championships, and touring circus shows across the U.S.
+                Based in Seattle • Available for Events Nationwide
             </p>
-            <p>
-                Interested in adding something unforgettable to your event? I’m available for select bookings and always open to exciting collaborations. <a href="about.html" style="color: #FFD700;">Learn more about what I do.</a> 
+            <p class="hero-credential">
+                🥉 3rd Place — 2026 International Jugglers&rsquo; Association Championships
             </p>
-        </div>
-
-    <!---------------------------------------------------------------------------
-                            Upcoming Shows
-    ---------------------------------------------------------------------------->
-        <div class="upcoming-shows-section" style="max-width: 1400px; margin: 0 auto;">
-            <h2 style="text-align: center; color: #001F3F; margin-bottom: 30px;">Upcoming Shows</h2>
-            <div class="event-flex-container">
-                <!-- Moisture Festival -->
-                <!-- <div style="display: flex; flex-direction: column; align-items: center;"> -->
-                    <!-- <a href="https://moisturefestival.org/performer/cory-black/" target="_blank" style="text-decoration: none; color: inherit;"> -->
-                        <!-- <div style="height: 300px; display: flex; align-items: center;"> -->
-                            <!-- <img src="./images/UpcomingShows/Cory_MoistureFest_Poster.jpg" alt="Moisture Festival Poster" -->
-                                 <!-- style="width: 400px; max-height: 300px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s;"> -->
-                        <!-- </div> -->
-                        <!-- <p style="margin-top: 15px; font-weight: bold; text-align: center;"> -->
-                            <!-- March 20–30, 2025<br>Moisture Festival – Seattle, WA -->
-                        <!-- </p> -->
-                    <!-- </a> -->
-                <!-- </div> -->
-
-                <!-- Cascade Juggling Festival -->
-                <!-- <div style="display: flex; flex-direction: column; align-items: center;"> -->
-                    <!-- <a href="https://cascadejugglingfestival.org/" target="_blank" style="text-decoration: none; color: inherit;"> -->
-                        <!-- <div style="height: 300px; display: flex; align-items: center;"> -->
-                            <!-- <img src="./images/UpcomingShows/CascadeJugglingFestPoster.png" alt="Cascade Juggling Poster" -->
-                                 <!-- style="width: 400px; max-height: 300px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s;"> -->
-                        <!-- </div> -->
-                        <!-- <p style="margin-top: 15px; font-weight: bold; text-align: center;"> -->
-                            <!-- May 9–11, 2025<br>Cascade Juggling Festival – Bellingham, WA -->
-                        <!-- </p> -->
-                    <!-- </a> -->
-                <!-- </div> -->
-
-                <!-- Flynn Creek Circus -->
-                <!-- <div style="display: flex; flex-direction: column; align-items: center;">
-                    <a href="https://www.flynncreekcircus.com/" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div style="height: 300px; display: flex; align-items: center;">
-                            <img src="./images/UpcomingShows/FCCPoster2025.png" alt="Flynn Creek Circus Poster"
-                                 style="width: 400px; max-height: 300px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s;">
-                        </div>
-                        <p style="margin-top: 15px; font-weight: bold; text-align: center;">
-                            June 2025 - January 2026<br>Touring with Flynn Creek Circus - CA, OR, WA
-                        </p>
-                    </a>
-                </div> -->
-                <!-- Moisture Festival -->
-                <!-- <div style="display: flex; flex-direction: column; align-items: center;">
-                    <a href="https://moisturefestival.org/" target="_blank" style="text-decoration: none; color: inherit;">
-                        <div style="height: 300px; display: flex; align-items: center;">
-                            <img src="./images/UpcomingShows/Moisture2026Poster.png" alt="Moisture 2026 Poster"
-                                 style="width: 400px; max-height: 300px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s;">
-                        </div>
-                        <p style="margin-top: 15px; font-weight: bold; text-align: center;">
-                            April 1 - 5, 2026<br>Moisture Festival - Seattle, Washington
-                        </p>
-                    </a>
-                </div> -->
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                        <div style="height: 300px; display: flex; align-items: center;">
-                            <img src="./images/UpcomingShows/FifaWorldCupPoster.png" alt="FIFA 2026 Poster"
-                                 style="width: 400px; max-height: 300px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s;">
-                        </div>
-                        <p style="margin-top: 15px; font-weight: bold; text-align: center;">
-                            Summer 2026<br>FIFA World Cup - Various Events Around Seattle
-                        </p>
-                </div>
-                <<!-- div style="display: flex; flex-direction: column; align-items: center;">
-                        <div style="height: 300px; display: flex; align-items: center;">
-                            <img src="./images/UpcomingShows/TukwilaBlockParty.png" alt="Tukwila Block Party Logo"
-                                 style="width: 400px; max-height: 300px; object-fit: contain; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: transform 0.3s;">
-                        </div>
-                        <p style="margin-top: 15px; font-weight: bold; text-align: center;">
-                            June 13, 2026<br>Tukwila Block Party - Tukwila, Washington
-                        </p>
-                </div> -->
-            </div>
-        </div>
-
-    <!---------------------------------------------------------------------------
-                            Showreels
-    ---------------------------------------------------------------------------->
-        <div id="showreels" class="videos-container">
-            <div class="video-container">
-                <h2 style="text-align: center; margin-top: 20px;">Freestyle Showreel</h2>
-                <div>
-                    <iframe
-                        width="560"
-                        height="315"
-                        src="https://www.youtube.com/embed/bz5RMHBLg1o"
-                        title="Freestyle Showreel Video"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-        </div>
-        <div class="video-container">
-            <h2 style="text-align: center; margin-top: 20px;">Circus Act Performance</h2>
-            <div>
-                <iframe
-                    width="560"
-                    height="315"
-                    src="https://www.youtube.com/embed/FGOaEeODd0I?si=LqqLC2uACJHuRmET"
-                    title="Stage Show Video"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+            <div class="hero-buttons">
+                <a href="{{ '/contact' | relative_url }}" class="hero-button-primary">
+                    Book a Performance
+                </a>
+                <a href="#showreels" class="hero-button-secondary">
+                    Watch Showreel
+                </a>
             </div>
         </div>
     </div>
-    <!---------------------------------------------------------------------------
-                                Footer
-    ---------------------------------------------------------------------------->
+</section>
+
+<!-- Featured By -->
+<section class="featured-by">
+    <div class="featured-container">
+        <div class="featured-logos">
+            {% for logo in site.data.featured %}
+            <img src="{{ logo.image | relative_url }}" alt="{{ logo.name }}" style="height: {{ logo.height }}px;">
+            {% endfor %}
+        </div>
     </div>
-    <footer>
-        <div class="footer-logo">
-            <img src="./images/CoryFreestyleLogoBlueWithGoldOutline.png" alt="Cory Freestyle Full Logo">
+</section>
+
+<!-- About Me teaser -->
+<div class="about-me-section">
+    <p>
+        I’m a professional circus artist based in Seattle, combining freestyle football and high-level juggling into a performance few others can offer.
+    </p>
+    <p>
+        With more than 300 performances at corporate events, festivals, theaters, and touring circus productions, I recently earned 3rd Place at the 2026 International Jugglers’ Association Championships.
+    </p>
+    <p>
+        Planning an event? <a href="{{ '/about' | relative_url }}" style="color: #FFD700;">Learn more about my performances</a>.
+    </p>
+</div>
+
+<!-- Showreels -->
+<div id="showreels" class="videos-container">
+    {% for video in site.data.videos %}
+    <div class="video-container">
+        <h2 style="text-align: center; margin-top: 20px;">{{ video.title }}</h2>
+        <div>
+            <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/{{ video.youtube_id }}"
+                title="{{ video.title }}"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
         </div>
-        <div class="contact-info">
-            <div class="contact-header">Contact</div>
-            <a href="mailto:info@coryfreestyle.com" style="text-decoration: underline;">info@coryfreestyle.com</a>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Upcoming Shows -->
+<div class="upcoming-shows-section" style="max-width: 1400px; margin: 0 auto;">
+    <h2 style="text-align: center; color: #001F3F; margin-bottom: 30px;">Upcoming Shows</h2>
+    <div class="event-flex-container">
+        {% for show in site.data.shows %}
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            {% if show.link and show.link != "" %}<a href="{{ show.link }}" target="_blank" style="text-decoration: none; color: inherit;">{% endif %}
+                <div style="height: 300px; display: flex; align-items: center;">
+                    <img src="{{ show.image | relative_url }}" alt="{{ show.alt }}">
+                </div>
+                <p style="margin-top: 15px; font-weight: bold; text-align: center;">
+                    {{ show.line1 }}<br>{{ show.line2 }}
+                </p>
+            {% if show.link and show.link != "" %}</a>{% endif %}
         </div>
-        <div class="social-media">
-            <div class="social-media-header">Social Media</div>
-            <a href="https://www.instagram.com/coryfreestyle/" target="_blank">
-                <img src="./images/instagram-48.png" alt="Instagram Icon"> Instagram
-            </a>
-            <a href="https://www.facebook.com/coryblackfs" target="_blank">
-                <img src="./images/facebook-48.png" alt="Facebook Icon"> Facebook
-            </a>
-        </div>
-        <div class="resume">
-            <div class="resume-header">Résumé</div>
-            <a href="./assets/CoryBlack-Resume.pdf" style="text-decoration: underline;" target="_blank">Download my résumé</a>
-        </div>
-        <div class="copyright">
-            &copy; 2023 Cory Black. All rights reserved.
-        </div>
-    </footer>
-    <script src="navbar-functionality.js" defer></script>
-</body>
-</html>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Closing CTA -->
+<section class="closing-cta">
+    <div class="closing-cta-container">
+        <h2>Ready to bring something unforgettable to your event?</h2>
+        <a href="{{ '/contact' | relative_url }}" class="hero-button-primary">
+            Book a Performance
+        </a>
+    </div>
+</section>

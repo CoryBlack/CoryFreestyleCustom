@@ -1,0 +1,27 @@
+<!-- Larger Screens Navbar -->
+<div class="navbar-large">
+    <div class="navbar-left">
+        <img src="{{ '/images/CoryFreestyleLogoBlueWithGoldNoText.png' | relative_url }}" alt="Cory Freestyle Logo" class="navbar-logo">
+        <a id="logo" href="{{ '/' | relative_url }}">Cory Freestyle</a>
+    </div>
+    <div>
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' or page.url == '/index.html' %} id="active"{% endif %}>Home</a>
+        <a href="{{ '/about' | relative_url }}"{% if page.url contains '/about' %} id="active"{% endif %}>About Me</a>
+        <a href="{{ '/contact' | relative_url }}"{% if page.url contains '/contact' %} id="active"{% endif %}>Contact</a>
+    </div>
+</div>
+
+<!-- Smaller Screens Navbar -->
+<div class="navbar-small">
+    <div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' or page.url == '/index.html' %} id="active"{% endif %}>Home</a>
+        <a href="{{ '/about' | relative_url }}"{% if page.url contains '/about' %} id="active"{% endif %}>About Me</a>
+        <a href="{{ '/contact' | relative_url }}"{% if page.url contains '/contact' %} id="active"{% endif %}>Contact</a>
+    </div>
+    <a id="logo" href="{{ '/' | relative_url }}">Cory Freestyle</a>
+</div>

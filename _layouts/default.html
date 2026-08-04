@@ -1,0 +1,50 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% if page.og_description %}
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ page.og_title | default: page.title | default: site.title }}">
+    <meta property="og:description" content="{{ page.og_description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:image" content="{{ site.url }}/images/og-preview.png">
+    <!-- X.com -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.og_title | default: page.title | default: site.title }}">
+    <meta name="twitter:description" content="{{ page.og_description }}">
+    <meta name="twitter:image" content="{{ site.url }}/images/og-preview.png">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <meta name="robots" content="index, follow">
+    {% endif %}
+
+    <link rel="icon" href="{{ '/images/soccerBallFavicon.png' | relative_url }}" type="image/png">
+    <title>{{ page.title | default: site.title }}</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    {% if page.extra_css %}
+      {% for css in page.extra_css %}
+    <link rel="stylesheet" href="{{ css | relative_url }}">
+      {% endfor %}
+    {% endif %}
+    {% if page.head_extra %}{{ page.head_extra }}{% endif %}
+</head>
+<body>
+
+    {% include navbar.html %}
+
+    <div class="content">
+        {{ content }}
+    </div>
+
+    {% include footer.html %}
+
+    <script src="{{ '/navbar-functionality.js' | relative_url }}" defer></script>
+    {% if page.foot_extra %}{{ page.foot_extra }}{% endif %}
+</body>
+</html>

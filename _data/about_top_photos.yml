@@ -1,0 +1,8 @@
+# On small screens only the middle photo shows, so put your best shot in the middle slot.
+
+- image: /images/jugglingWithABalanceNew.JPG
+  alt: Juggling With A Balance
+- image: /images/fsHeadshotNew.jpg
+  alt: Freestyle Headshot
+- image: /images/baselBall.jpg
+  alt: BaselBall

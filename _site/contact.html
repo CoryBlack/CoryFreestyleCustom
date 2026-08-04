@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+    <link rel="icon" href="/images/soccerBallFavicon.png" type="image/png">
+    <title>Cory Freestyle</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+      
+    <link rel="stylesheet" href="/assets/css/contact.css">
+      
+    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</head>
+<body>
+
+    <!-- Larger Screens Navbar -->
+<div class="navbar-large">
+    <div class="navbar-left">
+        <img src="/images/CoryFreestyleLogoBlueWithGoldNoText.png" alt="Cory Freestyle Logo" class="navbar-logo">
+        <a id="logo" href="/">Cory Freestyle</a>
+    </div>
+    <div>
+        <a href="/">Home</a>
+        <a href="/about">About Me</a>
+        <a href="/contact" id="active">Contact</a>
+    </div>
+</div>
+
+<!-- Smaller Screens Navbar -->
+<div class="navbar-small">
+    <div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <a href="/">Home</a>
+        <a href="/about">About Me</a>
+        <a href="/contact" id="active">Contact</a>
+    </div>
+    <a id="logo" href="/">Cory Freestyle</a>
+</div>
+
+
+    <div class="content">
+        <div id="contact-form-container">
+    <form id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <div class="g-recaptcha" data-sitekey="6LeESD4pAAAAANAn4oKqAvhsah0C_EPVVGGf5CZa"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="thank-you-message">
+        <p>Thank you for your message! We'll get back to you soon.</p>
+    </div>
+</div>
+
+    </div>
+
+    <footer>
+    <div class="footer-logo">
+        <img src="/images/CoryFreestyleLogoBlueWithGoldOutline.png" alt="Cory Freestyle Full Logo">
+    </div>
+    <div class="contact-info">
+        <div class="contact-header">Contact</div>
+        <a href="mailto:info@coryfreestyle.com" style="text-decoration: underline;">info@coryfreestyle.com</a>
+    </div>
+    <div class="social-media">
+        <div class="social-media-header">Social Media</div>
+        <a href="https://www.instagram.com/coryfreestyle/" target="_blank">
+            <img src="/images/instagram-48.png" alt="Instagram Icon"> Instagram
+        </a>
+        <a href="https://www.facebook.com/coryblackfs" target="_blank">
+            <img src="/images/facebook-48.png" alt="Facebook Icon"> Facebook
+        </a>
+    </div>
+    <div class="resume">
+        <div class="resume-header">Résumé</div>
+        <a href="/assets/CoryBlack-Resume.pdf" style="text-decoration: underline;" target="_blank">Download my résumé</a>
+    </div>
+    <div class="copyright">
+        &copy; 2026 Cory Black. All rights reserved.
+    </div>
+</footer>
+
+
+    <script src="/navbar-functionality.js" defer></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('contact-form');
+        const thankYouMessage = document.getElementById('thank-you-message');
+
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Verify reCAPTCHA before proceeding
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (!recaptchaResponse) {
+                // Alert the user if reCAPTCHA is not verified
+                alert('Please complete the reCAPTCHA before submitting the form.');
+                return;
+            }
+
+            // Assuming you've already validated the form fields here
+
+            // Display the thank you message
+            thankYouMessage.style.display = 'block';
+
+            // Hide the form
+            form.style.display = 'none';
+
+            // Send the form data to Formspree using fetch
+            const formData = new FormData(form);
+            try {
+                await fetch('https://formspree.io/f/mpzvavjn', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                    },
+                    body: formData,
+                });
+            } catch (error) {
+                console.error('Error submitting form:', error);
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+# "My Freestyle Journey" carousel on the About page.
+# Add a new photo by copying a block and filling it in. Newest first is the current convention.
+# Leave "link" blank to show plain text instead of a clickable link.
+
+- image: /images/CoryMoisturePoster2026.png
+  alt: Moisture Festival 2026
+  title: Moisture Festival
+  date: Apr. 1 - 5, 2025 | Seattle, Washington
+  link: https://www.instagram.com/p/DWr5XidSjUP/
+
+- image: /images/FCC2025AboutMe.PNG
+  alt: Flynn Creek Circus 2025
+  title: Flynn Creek Circus
+  date: June - December, 2025 | CA, OR, WA, USA
+  link: https://www.instagram.com/p/DM0pOmRyqSM/
+
+- image: /images/CascadeJugglingFestivalProfile.png
+  alt: Cascade Juggling Festival
+  title: Cascade Juggling Festival
+  date: May 9 - 11, 2025 | Bellingham, Washington
+  link: https://www.instagram.com/p/DIsOqCON1ut/
+
+- image: /images/MoistureFestAd.png
+  alt: Moisture Festival 2025
+  title: Moisture Festival
+  date: Mar. 20 - 30, 2025 | Seattle, Washington
+  link: https://www.instagram.com/p/DH71awdOmwQ/
+
+- image: /images/FCCWinterHeadshot.jpeg
+  alt: Flynn Creek Circus
+  title: Flynn Creek Circus 2024/25 Winter Tour
+  date: Dec. 19, 2024 - Jan. 5, 2025 | California, USA
+  link: https://www.instagram.com/reel/DD-Y20ESM-Q/
+
+- image: /images/FCCOutsideTent.jpg
+  alt: Flynn Creek Circus
+  title: Flynn Creek Circus 2024 Tour
+  date: July 1 - Oct. 29, 2024 | California & Oregon, USA
+  link: https://www.instagram.com/p/DAg-MnzzXA5/?img_index=1
+
+- image: /images/superball2023.jpg
+  alt: Super Ball 2023
+  title: Super Ball World Freestyle Football Championships
+  date: Aug. 6-11, 2023 | Prague, Czech Republic
+  link: https://www.instagram.com/p/CvqRS18t1KQ/
+
+- image: /images/theLostCircus.jpg
+  alt: The Lost Circus
+  title: The Lost Circus
+  date: May 31, 2024 | Seattle, Washington
+  link: https://www.instagram.com/p/C7w4OOWv6EU/?img_index=2
+
+- image: /images/ForeignJam.JPG
+  alt: Foreign Jam III
+  title: Foreign Jam III Freestyle Competition - Top 8
+  date: Jan. 27-29, 2023 | San Diego, California
+  link:
+
+- image: /images/AustinJugglefest.png
+  alt: Austin JuggleFest
+  title: Austin Jugglefest - Gala Show Performance
+  date: Feb. 22, 2025 | Austin, Texas
+  link: https://www.instagram.com/p/DGd_6d1piTF/
+
+- image: /images/boulderJugglingSquare.JPG
+  alt: Boulder Juggling Festival
+  title: Boulder Juggling Festival - Gala Show Performance
+  date: June 22, 2024 | Boulder, Colorado
+  link:
+
+- image: /images/RavePitchOpening.jpg
+  alt: Rave Pitch Opening
+  title: Sounders Rave Foundation - Pitch Opening Performance
+  date: Sept. 28, 2023 | Renton, Washington
+  link: https://www.instagram.com/p/Cy1UgIzPSdU/?img_index=1
+
+- image: /images/seattleTimesFeature.jpg
+  alt: Seattle Times Feature
+  title: Seattle Times Newspaper Feature
+  date: Aug. 25, 2015 | Seattle, Washington
+  link: https://www.seattletimes.com/sports/other-sports/freestyle-magician-excels-at-sleight-of-foot-with-a-soccer-ball/
+
+- image: /images/ForeignJamIV.png
+  alt: Foreign Jam IV
+  title: Foreign Jam IV Freestyle Competition
+  date: May 24-25, 2024 | Los Angeles, California
+  link: https://www.instagram.com/p/C7j-x0wPp-C/
+
+- image: /images/dodgeBallPerformance.jpg
+  alt: King of Swing Performance
+  title: King of Swing Performance - Yesler Community Center
+  date: May 31, 2023 | Seattle, Washington
+  link: https://www.instagram.com/p/CtDhyBVuWlo/?img_index=1
+
+- image: /images/baselball2023-1.jpg
+  alt: Basel Ball 2023
+  title: Basel Ball Freestyle Competition - Top 8
+  date: Dec. 8-9, 2023 | Miami, Florida
+  link: https://www.instagram.com/p/C0xSbAcvx2b/
+
+- image: /images/mondoJuggling.jpg
+  alt: Mondo Fest Juggling
+  title: Mondo Fest Gala Show Performance
+  date: Mar. 4, 2023 | St. Paul Minnesota
+  link: https://www.instagram.com/p/CqL3_d9P88u/?img_index=1
+
+- image: /images/BaselBall2022.JPG
+  alt: Basel Ball 2022
+  title: Basel Ball Freestyle Competition - Top 8
+  date: Dec. 3-4, 2022 | Miami, Florida
+  link:
+
+- image: /images/SuperBall2022.jpg
+  alt: Super Ball 2022
+  title: Super Ball World Freestyle Football Championships
+  date: Aug. 7-13, 2022 | Prague, Czech Republic
+  link:
+
+- image: /images/WffaUSOpen.JPG
+  alt: WFFA US Open
+  title: WFFA US Open Freestyle Championships - Top 16
+  date: July 2-3, 2022 | Daytona, Florida
+  link:
+
+- image: /images/SoundersPreGameEntertainment.jpg
+  alt: Seattle Sounders FC
+  title: Seattle Sounders FC - Pregame Entertainment
+  date: Summer 2021 | Seattle, Washington
+  link:
+
+- image: /images/eveningMagazineFeature.jpg
+  alt: Evening Magazine
+  title: Evening Magazine TV Segment
+  date: Sept. 28, 2015 | Seattle, Washington
+  link: https://www.king5.com/article/entertainment/television/programs/evening/cory-black-is-all-about-style/281-140105694

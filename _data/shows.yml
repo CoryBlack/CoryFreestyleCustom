@@ -1,0 +1,41 @@
+# Upcoming Shows shown on the homepage.
+# Add a new show by copying a block below and filling it in.
+# Leave "link" blank (or delete the line) if the show has no external page to link to.
+
+- image: /images/UpcomingShows/FifaWorldCupPoster.png
+  alt: FIFA 2026 Poster
+  line1: Summer 2026
+  line2: FIFA World Cup - Various Events Around Seattle
+  link:
+
+# Past / commented-out shows kept here for reference -- uncomment (remove the #) to bring one back:
+
+# - image: /images/UpcomingShows/Cory_MoistureFest_Poster.jpg
+#   alt: Moisture Festival Poster
+#   line1: March 20-30, 2025
+#   line2: Moisture Festival - Seattle, WA
+#   link: https://moisturefestival.org/performer/cory-black/
+
+# - image: /images/UpcomingShows/CascadeJugglingFestPoster.png
+#   alt: Cascade Juggling Poster
+#   line1: May 9-11, 2025
+#   line2: Cascade Juggling Festival - Bellingham, WA
+#   link: https://cascadejugglingfestival.org/
+
+# - image: /images/UpcomingShows/FCCPoster2025.png
+#   alt: Flynn Creek Circus Poster
+#   line1: June 2025 - January 2026
+#   line2: Touring with Flynn Creek Circus - CA, OR, WA
+#   link: https://www.flynncreekcircus.com/
+
+# - image: /images/UpcomingShows/Moisture2026Poster.png
+#   alt: Moisture 2026 Poster
+#   line1: April 1 - 5, 2026
+#   line2: Moisture Festival - Seattle, Washington
+#   link: https://moisturefestival.org/
+
+# - image: /images/UpcomingShows/TukwilaBlockParty.png
+#   alt: Tukwila Block Party Logo
+#   line1: June 13, 2026
+#   line2: Tukwila Block Party - Tukwila, Washington
+#   link:
