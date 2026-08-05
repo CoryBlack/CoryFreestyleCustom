@@ -13,3 +13,4 @@ exclude:
   - README-JEKYLL-MIGRATION.md
   - Gemfile
   - Gemfile.lock
+  - resume-source
