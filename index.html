@@ -82,25 +82,6 @@ extra_css:
     {% endfor %}
 </div>
 
-<!-- Upcoming Shows -->
-<div class="upcoming-shows-section" style="max-width: 1400px; margin: 0 auto;">
-    <h2 style="text-align: center; color: #001F3F; margin-bottom: 30px;">Upcoming Shows</h2>
-    <div class="event-flex-container">
-        {% for show in site.data.shows %}
-        <div style="display: flex; flex-direction: column; align-items: center;">
-            {% if show.link and show.link != "" %}<a href="{{ show.link }}" target="_blank" style="text-decoration: none; color: inherit;">{% endif %}
-                <div style="height: 300px; display: flex; align-items: center;">
-                    <img src="{{ show.image | relative_url }}" alt="{{ show.alt }}">
-                </div>
-                <p style="margin-top: 15px; font-weight: bold; text-align: center;">
-                    {{ show.line1 }}<br>{{ show.line2 }}
-                </p>
-            {% if show.link and show.link != "" %}</a>{% endif %}
-        </div>
-        {% endfor %}
-    </div>
-</div>
-
 <!-- Closing CTA -->
 <section class="closing-cta">
     <div class="closing-cta-container">

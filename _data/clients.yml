@@ -1,44 +1,68 @@
-- image: /images/clients/moistureFestivalLogo.png
-  alt: Moisture Festival
+# "Selected Clients" shown on the About page.
+# Kept intentionally small -- chosen to show the breadth of work (corporate,
+# sports, festival, and circus) rather than repeating the homepage's all-corporate
+# "Featured By" row. The rest are commented out below; uncomment (remove the #)
+# to bring any of them back.
+
+- image: /images/Google_wordmark.svg.webp
+  alt: Google
+- image: /images/nordstrom-com-wordmark.png
+  alt: Nordstrom
+- image: /images/Seattle_Sounders_FC_wordmark.svg.webp
+  alt: Seattle Sounders FC
+- image: /images/pfizer-com-wordmark.png
+  alt: Pfizer
 - image: /images/clients/FlynnCreekLogo.png
   alt: Flynn Creek Circus
-- image: /images/clients/soundersLogo.jpg
-  alt: Sounders
-- image: /images/clients/mcdonaldsLogo.JPG
-  alt: McDonalds
-- image: /images/clients/toppsLogo.JPG
-  alt: Topps
-- image: /images/clients/seattleTimesLogo.JPG
-  alt: Seattle Times
-- image: /images/clients/raveLogo.jpg
-  alt: Rave
-- image: /images/clients/boulderFestLogo.jpg
-  alt: Bolder Juggling Festival
-- image: /images/clients/sea206Logo.png
-  alt: SEA206
-- image: /images/clients/eveningMagazineLogo.jpg
-  alt: Evening Magazine
-- image: /images/clients/washingtonYouthSoccerLogo.jpg
-  alt: Youth Soccer
-- image: /images/clients/cityOfBellevueLogo.png
-  alt: City of Bellevue
-- image: /images/clients/mondoFestLogo.JPG
-  alt: Mondo
-- image: /images/clients/AustinJuggleFestLogo.png
-  alt: Austin JuggleFest
-- image: /images/clients/CascadeJugglefest.png
-  alt: Cascade Juggling Festival
-- image: /images/clients/LockLabLogo.png
-  alt: Locklab
-- image: /images/clients/DoverEntertainmentLogo.png
-  alt: Dover Entertainment - Pacific Place
-- image: /images/clients/HomeTeamSeattle.png
-  alt: Hometeam Seattle
-- image: /images/clients/BoysAndGirlsClub.png
-  alt: Boys and Girls Club Bellevue
-- image: /images/clients/SEAAirportLogo.png
-  alt: SEA Airport
-- image: /images/clients/Tukwila.png
-  alt: City of Tukwila
-- image: /images/clients/PacificPlace.png
-  alt: Pacific Place Mall
+- image: /images/clients/moistureFestivalLogo.png
+  alt: Moisture Festival
+
+# Previously featured here (swapped out for the set above, not deleted):
+
+# - image: /images/The_Seattle_Times_logo.svg.webp
+#   alt: Seattle Times
+# - image: /images/Port_of_Seattle_Logo.svg.webp
+#   alt: Port of Seattle
+# - image: /images/clients/soundersLogo.jpg
+#   alt: Sounders
+# - image: /images/clients/mcdonaldsLogo.JPG
+#   alt: McDonalds
+# - image: /images/clients/SEAAirportLogo.png
+#   alt: SEA Airport
+# - image: /images/clients/eveningMagazineLogo.jpg
+#   alt: Evening Magazine
+
+# Additional past collaborations (not currently shown):
+
+# - image: /images/clients/toppsLogo.JPG
+#   alt: Topps
+# - image: /images/clients/seattleTimesLogo.JPG
+#   alt: Seattle Times
+# - image: /images/clients/raveLogo.jpg
+#   alt: Rave
+# - image: /images/clients/boulderFestLogo.jpg
+#   alt: Bolder Juggling Festival
+# - image: /images/clients/sea206Logo.png
+#   alt: SEA206
+# - image: /images/clients/washingtonYouthSoccerLogo.jpg
+#   alt: Youth Soccer
+# - image: /images/clients/cityOfBellevueLogo.png
+#   alt: City of Bellevue
+# - image: /images/clients/mondoFestLogo.JPG
+#   alt: Mondo
+# - image: /images/clients/AustinJuggleFestLogo.png
+#   alt: Austin JuggleFest
+# - image: /images/clients/CascadeJugglefest.png
+#   alt: Cascade Juggling Festival
+# - image: /images/clients/LockLabLogo.png
+#   alt: Locklab
+# - image: /images/clients/DoverEntertainmentLogo.png
+#   alt: Dover Entertainment - Pacific Place
+# - image: /images/clients/HomeTeamSeattle.png
+#   alt: Hometeam Seattle
+# - image: /images/clients/BoysAndGirlsClub.png
+#   alt: Boys and Girls Club Bellevue
+# - image: /images/clients/Tukwila.png
+#   alt: City of Tukwila
+# - image: /images/clients/PacificPlace.png
+#   alt: Pacific Place Mall

@@ -52,52 +52,83 @@ foot_extra: |
 </div>
 
 <div class="about-me-container">
-    <div class="about-me-section">
-        <h2>Where I Am Now</h2>
-        <p>
-            I’m currently based in Seattle performing at various local events and gearing up for performances for the 2026 FIFA World Cup. I’m always open to exciting opportunities to share my act and connect with new audiences.
-        </p>
-    </div>
-    <div class="about-me-section">
-        <h2>About Me</h2>
-        <p>
-            Hi, I’m Cory Black. I’m a soccer freestyle and juggling performer based in Seattle with 16 years of freestyle experience and over 11 years of juggling. I’ve performed in over 300 live shows around the U.S., including stage productions, festivals, corporate events, and sports venues.
-        </p>
-        <p>
-            I’ve competed in freestyle football competitions around the world, including the <strong>Super Ball World Freestyle Football Championships</strong> in Prague. I also spent two years performing with the <a href="https://www.flynncreekcircus.com/" target="_blank" style="color: #FFD700;">Flynn Creek Circus</a>, where I’ve toured as both a solo and ensemble act.
-        </p>
-        <p>
-            Past clients include the Seattle Sounders, Moisture Festival, McDonald’s, and a variety of festivals and private events. I’m available for shows, promotions, and creative projects — <a href="{{ '/contact' | relative_url }}" style="color: #FFD700;">get in touch here</a>.
-        </p>
-    </div>
-    <div class="about-me-section">
-        <h2>My Freestyle Journey</h2>
-        <p>
-            Embark on a visual journey through my years of performing. Check out the gallery below to witness some of my most memorable events and behind-the-scenes moments.
-        </p>
-        <div class="my-freestyle-journey-carousel">
-            {% for item in site.data.gallery %}
-            <div class="about-me-image-container">
-                <img src="{{ item.image | relative_url }}" alt="{{ item.alt }}">
-                <div class="about-me-description">
-                    {% if item.link and item.link != "" %}
-                    <p><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></p>
-                    {% else %}
-                    <p>{{ item.title }}</p>
-                    {% endif %}
-                    <p>{{ item.date }}</p>
+    <div class="about-card">
+        <div class="about-me-section">
+            <h2>Where I Am Now</h2>
+            <p>
+                I’m based in Seattle, performing freestyle football and juggling for corporate events, festivals, theaters, sporting events, and touring circus productions around the country.
+            </p>
+            <p>
+                Most recently, I earned 3rd Place at the 2026 International Jugglers’ Association Championships. I’m always glad to connect about new opportunities to share the act with a new audience.
+            </p>
+        </div>
+        <div class="about-me-section">
+            <h2>About Me</h2>
+            <p>
+                Hi, I’m Cory Black. I’m a soccer freestyle and juggling performer based in Seattle with 16 years of freestyle experience and over 11 years of juggling. I’ve performed in over 300 live shows around the U.S., including stage productions, festivals, corporate events, and sports venues.
+            </p>
+            <p>
+                I’ve competed in freestyle football competitions around the world, including the <strong>Super Ball World Freestyle Football Championships</strong> in Prague.
+            </p>
+            <p>
+                I also spent two years performing with the <a href="https://www.flynncreekcircus.com/" target="_blank" style="color: #FFD700;">Flynn Creek Circus</a>, where I’ve toured as both a solo and ensemble act.
+            </p>
+            <p>
+                Past clients include the Seattle Sounders, Moisture Festival, McDonald’s, and a variety of festivals and private events.
+            </p>
+            <p>
+                I’m available for shows, promotions, and creative projects — <a href="{{ '/contact' | relative_url }}" style="color: #FFD700;">get in touch here</a>.
+            </p>
+        </div>
+        <div class="about-me-section">
+            <h2>Performance Options</h2>
+            <p>
+                Every event calls for something a little different — here's a quick sense of how a performance might take shape for yours.
+            </p>
+            <div class="performance-options">
+                <div class="performance-option">
+                    <h3>Stage Performance</h3>
+                    <p>My featured performance for theaters, festivals, corporate events, galas, and sporting events.</p>
+                </div>
+                <div class="performance-option">
+                    <h3>Roaming Entertainment</h3>
+                    <p>Interactive freestyle football and juggling for receptions, fan zones, festivals, company parties, and community events.</p>
+                </div>
+                <div class="performance-option">
+                    <h3>Custom Performances</h3>
+                    <p>Many of my bookings are one-of-a-kind — corporate activations, sports entertainment, variety productions, and other special events. If you have something specific in mind, I'm happy to talk through how it could work.</p>
                 </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 
-    <div class="about-me-section">
-        <h2>Collaborations</h2>
-        <p>
-            Take a look at some of the companies I've had the pleasure of working with. Each logo represents a unique collaboration and memorable experience.
-        </p>
-        <div class="client-collaborations">
+    <div class="about-card">
+        <div class="about-me-section">
+            <h2>My Freestyle Journey</h2>
+            <p>
+                Embark on a visual journey through my years of performing. Check out the gallery below to witness some of my most memorable events and behind-the-scenes moments.
+            </p>
+            <div class="my-freestyle-journey-carousel">
+                {% for item in site.data.gallery %}
+                <div class="about-me-image-container">
+                    <img src="{{ item.image | relative_url }}" alt="{{ item.alt }}">
+                    <div class="about-me-description">
+                        {% if item.link and item.link != "" %}
+                        <p><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></p>
+                        {% else %}
+                        <p>{{ item.title }}</p>
+                        {% endif %}
+                        <p>{{ item.date }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="about-card">
+        <div class="about-me-section">
+            <h2>Selected Clients</h2>
             <div class="logo-gallery">
                 {% for client in site.data.clients %}
                 <img src="{{ client.image | relative_url }}" alt="{{ client.alt }}">
@@ -105,12 +136,14 @@ foot_extra: |
             </div>
         </div>
     </div>
-
-    <div class="about-me-section">
-        <h2>Stay Connected</h2>
-        <p class="instagram-section">
-            Follow me on <a href="https://www.instagram.com/coryfreestyle/" target="_blank" style="color: #FFD700;">Instagram</a> to stay updated on my latest freestyle soccer performances and behind-the-scenes moments.
-        </p>
-        <div id="instagram-feed"></div>
-    </div>
 </div>
+
+<section class="about-closing-cta">
+    <div class="about-closing-cta-container">
+        <h2>Ready to bring something unique to your event?</h2>
+        <p>Tell me a bit about what you're planning, and let's figure out the right fit together.</p>
+        <a href="{{ '/contact' | relative_url }}" class="cta-button">
+            Book a Performance
+        </a>
+    </div>
+</section>

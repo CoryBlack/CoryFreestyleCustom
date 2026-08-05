@@ -7,36 +7,33 @@ body {
 .content {
     text-align: center;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     margin: 0;
-    background: linear-gradient(to right, #F2F5F8, #B0C5D9);
-    background-size: auto 100%, auto 100%;
-    background-position: left, right;
-    background-repeat: no-repeat;
+    background: #001F3F;
 }
 
-@media only screen and (min-width: 1249px) {
-    .content {
-        background-image: url('{{ '/images/contactFormImages/contactFormBackgroundLeftLarge.jpg' | relative_url }}'), url('{{ '/images/contactFormImages/contactFormBackgroundRightLarge.JPG' | relative_url }}');
-    }
-}
-
-@media only screen and (min-width: 1046px) and (max-width: 1248px) {
-    .content {
-        background-image: url('{{ '/images/contactFormImages/contactFormBackgroundLeftMedium.jpg' | relative_url }}'), url('{{ '/images/contactFormImages/contactFormBackgroundRightMedium.JPG' | relative_url }}');
-    }
-}
-
-@media only screen and (min-width: 846px) and (max-width: 1045px) {
-    .content {
-        background-image: url('{{ '/images/contactFormImages/contactFormBackgroundLeftSmall.jpg' | relative_url }}'), url('{{ '/images/contactFormImages/contactFormBackgroundRightSmall.JPG' | relative_url }}');
-    }
+/* Using the pre-cropped "Small" portrait images here instead of the
+   landscape "Large" ones -- object-fit:cover still fills the panel exactly,
+   but now the source image's own proportions actually match the panel's
+   shape, so cover barely has to crop anything. */
+.contact-photo {
+    display: block;
+    flex: 1 1 0;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @media only screen and (max-width: 845px) {
+    .contact-photo {
+        display: none;
+    }
+
     .content {
         background-image: url('{{ '/images/contactFormImages/StageImage.jpg' | relative_url }}');
+        background-size: cover;
         background-position: center;
     }
 }
@@ -45,27 +42,50 @@ body {
     background-color: #001F3F;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 14px 20px;
     width: 400px;
-    height: 100%;
+    flex: 0 0 auto;
     margin: auto;
+}
+
+.contact-intro {
+    text-align: left;
+    margin-bottom: 32px;
+}
+
+.contact-intro h1 {
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+
+.contact-intro p {
+    color: #FFFFFF;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
 }
 
 #contact-form label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #FFFFFF;
     text-align: left;
 }
 
 #contact-form input,
+#contact-form select,
 #contact-form textarea {
     width: 100%;
     padding: 10px;
-    margin-bottom: 16px;
+    margin-bottom: 22px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: #FFFFFF;
 }
 
 .g-recaptcha {
