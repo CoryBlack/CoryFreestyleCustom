@@ -1,0 +1,368 @@
+<!--
+  Source file for the Cirque du Soleil casting résumé PDF.
+  Plain HTML/CSS, not part of the Jekyll site -- only used to generate the PDF.
+
+  To regenerate the PDF from the repo root:
+
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+      --headless --disable-gpu --no-margins --print-to-pdf-no-header \
+      --print-to-pdf=assets/CoryBlack-Resume-Cirque.pdf \
+      "file://$(pwd)/resume-source/resume-cirque.html"
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cory Black — Circus Performer Résumé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: 8.5in 11in; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    width: 8.5in; height: 11in;
+    font-family: 'Inter', Arial, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    background: #FFFFFF;
+  }
+
+  .page {
+    width: 8.5in;
+    height: 11in;
+    padding: 0.5in 0.62in 0.42in;
+    display: flex;
+    flex-direction: column;
+    color: #0B1F33;
+  }
+
+  /* ---------------- Header ---------------- */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.3in;
+  }
+
+  .header .name {
+    font-family: 'Fraunces', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: #001F3F;
+    letter-spacing: 0.2px;
+    margin: 0 0 6px;
+    line-height: 1;
+  }
+
+  .header .role {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #B8930A;
+    margin: 0 0 13px;
+  }
+
+  .header .contact {
+    font-size: 12px;
+    color: #4a5a6a;
+  }
+
+  .header .contact .dot {
+    color: #C9A400;
+    margin: 0 7px;
+  }
+
+  .headshot {
+    width: 1.35in;
+    height: 1.35in;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 55%;
+    border: 2.5px solid #FFD700;
+    box-shadow: 0 2px 10px rgba(0,31,63,0.18);
+    flex-shrink: 0;
+  }
+
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, #001F3F, #C9A400 55%, transparent);
+    border: none;
+    margin: 16px 0 20px;
+  }
+
+  /* ---------------- Summary ---------------- */
+  .summary {
+    font-size: 13.5px;
+    line-height: 1.68;
+    color: #33465a;
+    margin: 0 0 22px;
+    max-width: 6.9in;
+  }
+
+  /* ---------------- Section labels ---------------- */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.1px;
+    text-transform: uppercase;
+    color: #001F3F;
+    margin: 0 0 11px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(0,31,63,0.15);
+  }
+
+  .section-label .dot-mark {
+    color: #C9A400;
+  }
+
+  section {
+    margin-bottom: 23px;
+  }
+
+  section:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* ---------------- Highlights ---------------- */
+  .badge {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    border: 1.5px solid #C9A400;
+    background: linear-gradient(135deg, #FFFBEA, #FFF3C4);
+    border-radius: 9px;
+    padding: 14px 20px;
+    margin-bottom: 14px;
+  }
+
+  .badge .medal {
+    font-size: 27px;
+    line-height: 1.15;
+  }
+
+  .badge .badge-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #6b5400;
+    margin: 0 0 4px;
+  }
+
+  .badge .badge-detail {
+    font-size: 12.5px;
+    color: #7a6414;
+    line-height: 1.52;
+    margin: 0;
+  }
+
+  .highlight-row {
+    display: flex;
+    gap: 28px;
+  }
+
+  .highlight-item {
+    flex: 1;
+    border-left: 2.5px solid #FFD700;
+    padding: 2px 0 2px 14px;
+  }
+
+  .highlight-item .h-name {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #001F3F;
+    margin: 0 0 3px;
+  }
+
+  .highlight-item .h-detail {
+    font-size: 11.5px;
+    color: #526676;
+    line-height: 1.48;
+    margin: 0;
+  }
+
+  /* ---------------- Experience entries ---------------- */
+  .entry {
+    margin-bottom: 11px;
+  }
+
+  .entry:last-child {
+    margin-bottom: 0;
+  }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .entry-head .entry-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #001F3F;
+  }
+
+  .entry-head .entry-meta {
+    font-size: 11.5px;
+    color: #8a97a5;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .entry-role {
+    font-size: 12px;
+    font-weight: 600;
+    color: #B8930A;
+    margin: 2px 0 6px;
+  }
+
+  .entry-body {
+    font-size: 12px;
+    line-height: 1.58;
+    color: #445263;
+    margin: 0;
+    max-width: 7.1in;
+  }
+
+  .entry-body strong {
+    color: #33465a;
+  }
+
+  /* ---------------- Body paragraph (festivals, media) ---------------- */
+  .lead-paragraph {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #445263;
+    margin: 0;
+    max-width: 7.1in;
+  }
+
+  .lead-paragraph strong {
+    color: #33465a;
+  }
+
+  /* ---------------- Skills ---------------- */
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    background: #FFFFFF;
+    border: 1px solid #C9A400;
+    color: #6b5400;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 6px 15px;
+    border-radius: 999px;
+  }
+
+  /* ---------------- Footer ---------------- */
+  .footer {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgba(0,31,63,0.1);
+    font-size: 10.5px;
+    color: #8a97a5;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+
+  .footer strong {
+    color: #001F3F;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div>
+      <div class="name">Cory Black</div>
+      <div class="role">Circus Performer — Freestyle Football &amp; Juggling</div>
+      <div class="contact">Seattle, WA, USA<span class="dot">&middot;</span>+1 (425) 444-8025<span class="dot">&middot;</span>info@coryfreestyle.com<span class="dot">&middot;</span>coryfreestyle.com</div>
+    </div>
+    <img class="headshot" src="../assets/CoryResumeHeadshot.png" alt="Cory Black">
+  </div>
+
+  <hr class="rule">
+
+  <div class="summary">Cory Black is a professional circus performer specializing in the rare combination of elite freestyle football and high&#8209;level juggling, brought together in a single original act. That hybrid has been built and stage&#8209;tested over 300+ professional performances — spanning touring circus productions, theaters, festivals, and major sporting events.</div>
+
+  <section>
+    <div class="section-label"><span class="dot-mark">&#9679;</span> Career Highlights</div>
+    <div class="badge">
+      <span class="medal">&#x1F949;</span>
+      <div>
+        <p class="badge-title">Bronze Medal — 2026 International Jugglers&rsquo; Association Championships</p>
+        <p class="badge-detail">Earned 3rd place at one of the world&rsquo;s premier stage juggling competitions — the championship event of North America&rsquo;s largest annual juggling festival.</p>
+      </div>
+    </div>
+    <div class="highlight-row">
+      <div class="highlight-item">
+        <p class="h-name">Grand National Champion</p>
+        <p class="h-detail">US Online Freestyle Football Championships (2022)</p>
+      </div>
+      <div class="highlight-item">
+        <p class="h-name">300+ Performances</p>
+        <p class="h-detail">Touring circus productions, theaters, festivals &amp; sporting events</p>
+      </div>
+      <div class="highlight-item">
+        <p class="h-name">Selected Clients</p>
+        <p class="h-detail">Google &middot; Nordstrom &middot; Pfizer &middot; Seattle Sounders FC &middot; FIFA World Cup 26</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label"><span class="dot-mark">&#9679;</span> Touring Experience</div>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Flynn Creek Circus</span>
+        <span class="entry-meta">June 2024 – Dec 2025 &middot; CA, OR &amp; WA</span>
+      </div>
+      <div class="entry-role">Touring Performer &amp; Marketing Manager</div>
+      <p class="entry-body">Performed <strong>250+ shows</strong> across multiple Summer and Winter touring productions, performing an original freestyle football &amp; juggling act, a separate traditional juggling act, character roles, and ensemble club&#8209;passing numbers alongside a resident cast. In 2025, also served as <strong>Marketing Manager</strong> — leading community outreach, media relations, ticket office operations, and audience engagement for the tour.</p>
+      </div>
+  </section>
+
+  <section>
+    <div class="section-label"><span class="dot-mark">&#9679;</span> Featured Festival Performances</div>
+    <p class="lead-paragraph">Invited gala performer at <strong>Moisture Festival</strong> (Seattle, WA) — the world&rsquo;s largest comedy and variety arts festival — plus featured gala appearances at the <strong>Cascade</strong>, <strong>Austin</strong>, and <strong>Boulder</strong> Juggling Festivals, and <strong>Mondo Festival</strong>, 2023–2026.</p>
+  </section>
+
+  <section>
+    <div class="section-label"><span class="dot-mark">&#9679;</span> Media</div>
+    <p class="lead-paragraph">Featured by <strong>The Seattle Times</strong>, <strong>KING 5&rsquo;s Evening Magazine</strong>, and <strong>KIRO 7 News</strong>, including coverage of his run at the Super Ball World Freestyle Football Championships, plus additional television and radio appearances promoting Flynn Creek Circus.</p>
+  </section>
+
+  <section>
+    <div class="section-label"><span class="dot-mark">&#9679;</span> Skills</div>
+    <div class="tag-row">
+      <span class="tag">Freestyle Football</span>
+      <span class="tag">Ball, Club &amp; Ring Juggling</span>
+      <span class="tag">Soccer Ball Juggling</span>
+      <span class="tag">Character Performance</span>
+      <span class="tag">Ensemble Performance</span>
+      <span class="tag">Touring Productions</span>
+      <span class="tag">Original Act Creation</span>
+    </div>
+  </section>
+
+  <div class="footer">Full performance reel &amp; portfolio at <strong>coryfreestyle.com</strong></div>
+
+</div>
+</body>
+</html>

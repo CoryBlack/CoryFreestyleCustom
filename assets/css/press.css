@@ -1,0 +1,213 @@
+/*-----------------------------------------------------------------------*/
+/* Press Page Intro                                                      */
+/*-----------------------------------------------------------------------*/
+.press-intro {
+    max-width: 90%;
+    width: 700px;
+    margin: 48px auto 0;
+    text-align: center;
+}
+
+.press-intro h1 {
+    font-size: 2.4rem;
+    margin: 0 0 14px;
+}
+
+.press-intro p {
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+/*-----------------------------------------------------------------------*/
+/* Shared section rhythm (mirrors .about-me-container spacing)           */
+/*-----------------------------------------------------------------------*/
+.press-container {
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.press-container .about-card {
+    margin-top: 28px;
+}
+
+.press-container h2 {
+    margin: 0 0 16px;
+}
+
+/*-----------------------------------------------------------------------*/
+/* Press Release (light "document" card -- kept off-navy so a full       */
+/* release reads comfortably, unlike the shorter teaser blocks           */
+/* elsewhere on the site that work fine reversed white-on-navy)          */
+/*-----------------------------------------------------------------------*/
+.press-release-card {
+    background: #FFFFFF;
+    color: #1c2b3a;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 36px 40px;
+}
+
+.press-release-card .pr-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: #b8860b;
+    margin: 0 0 10px;
+}
+
+.press-release-card .pr-headline {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.32;
+    color: #001F3F;
+    margin: 0 0 18px;
+}
+
+.press-release-card p {
+    line-height: 1.7;
+    margin: 0 0 14px;
+}
+
+.press-release-card p:last-child {
+    margin-bottom: 0;
+}
+
+.press-release-card .pr-quote {
+    border-left: 3px solid #FFD700;
+    padding: 2px 0 2px 18px;
+    margin: 4px 0 16px;
+    font-style: italic;
+    color: #33465a;
+}
+
+.press-release-card .pr-about {
+    background: #F2F5F8;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-top: 22px;
+}
+
+.press-release-card .pr-about p {
+    font-size: 0.95rem;
+    color: #33465a;
+}
+
+.press-download {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.press-download-top {
+    margin: 0 0 20px;
+}
+
+.press-download .press-pdf-button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    background: #FFD700;
+    color: #001F3F;
+    transition: opacity 0.2s ease;
+}
+
+.press-download .press-pdf-button:hover {
+    opacity: 0.9;
+}
+
+/*-----------------------------------------------------------------------*/
+/* Full Competition Performance video (large + centered, unlike the      */
+/* fixed-size multi-video grid on the homepage)                          */
+/*-----------------------------------------------------------------------*/
+.press-video-wrap {
+    max-width: 82%;
+    margin: 0 auto;
+}
+
+.press-video-responsive {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+.press-video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .press-video-wrap {
+        max-width: 100%;
+    }
+}
+
+/*-----------------------------------------------------------------------*/
+/* Photos                                                                */
+/*-----------------------------------------------------------------------*/
+.press-photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-top: 6px;
+}
+
+.press-photo-grid figure {
+    margin: 0;
+}
+
+.press-photo-grid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.press-photo-grid figcaption {
+    margin-top: 16px;
+    font-size: 0.78rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+@media only screen and (max-width: 768px) {
+    .press-photo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .press-release-card {
+        padding: 26px 22px;
+    }
+
+    .press-intro h1 {
+        font-size: 2rem;
+    }
+}
+
+/*-----------------------------------------------------------------------*/
+/* Media Contact                                                        */
+/*-----------------------------------------------------------------------*/
+.press-contact p {
+    margin: 0 0 6px;
+}
+
+.press-contact a {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+.press-contact a:hover {
+    text-decoration: underline;
+}
