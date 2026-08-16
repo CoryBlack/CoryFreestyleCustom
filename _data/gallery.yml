@@ -2,17 +2,35 @@
 # Add a new photo by copying a block and filling it in. Newest first is the current convention.
 # Leave "link" blank to show plain text instead of a clickable link.
 
-- image: /images/CoryMoisturePoster2026.png
-  alt: Moisture Festival 2026
-  title: Moisture Festival
-  date: Apr. 1 - 5, 2025 | Seattle, Washington
-  link: https://www.instagram.com/p/DWr5XidSjUP/
+- image: /images/IJAWithLogo.jpg
+  alt: IJA 2026 Championships Bronze Medal
+  title: International Jugglers' Association Championships - 3rd Place
+  date: July 27 - Aug. 2, 2026 | Fort Wayne, Indiana
+  link: https://www.youtube.com/watch?v=F8anPXG1S4M
 
 - image: /images/FCC2025AboutMe.PNG
   alt: Flynn Creek Circus 2025
   title: Flynn Creek Circus
   date: June - December, 2025 | CA, OR, WA, USA
   link: https://www.instagram.com/p/DM0pOmRyqSM/
+
+- image: /images/CoryMoisturePoster2026.png
+  alt: Moisture Festival 2026
+  title: Moisture Festival
+  date: Apr. 1 - 5, 2025 | Seattle, Washington
+  link: https://www.instagram.com/p/DWr5XidSjUP/
+
+- image: /images/NordstromBlockPartyWithLogo.PNG
+  alt: Nordstrom Downtown Seattle Block Party
+  title: Nordstrom Downtown Seattle Block Party
+  date: July 18-19, 2026 | Seattle, Washington
+  link:
+
+- image: /images/MicrosoftWithLogo.jpg
+  alt: Microsoft Pop-Up Performance
+  title: Microsoft Pop-Up @31 Performance
+  date: July 8, 2026 | Redmond, Washington
+  link:
 
 - image: /images/CascadeJugglingFestivalProfile.png
   alt: Cascade Juggling Festival
